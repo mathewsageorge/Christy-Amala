@@ -4,10 +4,10 @@ import './globals.css';
 
 const serif = Cormorant_Garamond({ variable: '--font-serif', subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 const sans = DM_Sans({ variable: '--font-sans', subsets: ['latin'], weight: ['400', '500', '600'] });
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://christy-amala.vercel.app';
 
 export const metadata: Metadata = {
-  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  metadataBase: new URL(siteUrl),
   title: 'Christy & Amala | Wedding Celebration',
   description: 'Join us to celebrate the wedding of Christy and Amala on 03 January 2027.',
   openGraph: {
