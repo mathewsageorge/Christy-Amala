@@ -69,7 +69,6 @@ export default function Home() {
   >('idle');
   const [showCelebration, setShowCelebration] = useState(false);
   const [rsvpGuestName, setRsvpGuestName] = useState('');
-  const [loveProgress, setLoveProgress] = useState(0);
   const [showLoveNote, setShowLoveNote] = useState(false);
   const [tapSparkles, setTapSparkles] = useState<
     Array<{ id: number; left: number; top: number }>
@@ -113,20 +112,6 @@ export default function Home() {
     );
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [isInvitationOpen]);
-
-  useEffect(() => {
-    const updateLoveProgress = () => {
-      const available = document.documentElement.scrollHeight - window.innerHeight;
-      setLoveProgress(available > 0 ? Math.round((window.scrollY / available) * 100) : 0);
-    };
-    updateLoveProgress();
-    window.addEventListener('scroll', updateLoveProgress, { passive: true });
-    window.addEventListener('resize', updateLoveProgress);
-    return () => {
-      window.removeEventListener('scroll', updateLoveProgress);
-      window.removeEventListener('resize', updateLoveProgress);
-    };
   }, [isInvitationOpen]);
 
   useEffect(
@@ -290,19 +275,6 @@ export default function Home() {
               ✦
             </span>
           ))}
-        </div>
-        <div className="love-meter" aria-label={`Love meter: ${loveProgress}% through the invitation`}>
-          <span>♡</span>
-          <div className="love-meter-track">
-            <i
-              style={
-                {
-                  height: `${loveProgress}%`,
-                  '--love-progress': `${loveProgress}%`,
-                } as CSSProperties
-              }
-            />
-          </div>
         </div>
         <button
           className="music-toggle"
