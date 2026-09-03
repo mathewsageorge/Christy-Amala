@@ -134,25 +134,6 @@ export default function Home() {
     [],
   );
 
-  useEffect(() => {
-    if (!isInvitationOpen || !window.matchMedia('(hover: hover)').matches) return;
-    let lastHeart = 0;
-    const leaveHeart = (event: PointerEvent) => {
-      const now = performance.now();
-      if (now - lastHeart < 72) return;
-      lastHeart = now;
-      const heart = document.createElement('span');
-      heart.className = 'cursor-heart-trail';
-      heart.textContent = '♡';
-      heart.style.left = `${event.clientX}px`;
-      heart.style.top = `${event.clientY}px`;
-      document.body.appendChild(heart);
-      window.setTimeout(() => heart.remove(), 760);
-    };
-    document.addEventListener('pointermove', leaveHeart);
-    return () => document.removeEventListener('pointermove', leaveHeart);
-  }, [isInvitationOpen]);
-
   const toggleMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;

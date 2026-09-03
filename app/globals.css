@@ -27,6 +27,8 @@ a {
 }
 .site-content.is-open {
   display: block;
+  position: relative;
+  isolation: isolate;
 }
 .invitation-gate {
   min-height: 100svh;
@@ -1639,24 +1641,33 @@ footer span {
 .ambient-petals,
 .tap-sparkles {
   position: fixed;
-  z-index: 8;
+  z-index: 0;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+}
+
+.tap-sparkles {
+  z-index: 20;
+}
+
+.site-content > :not(.ambient-petals):not(.tap-sparkles):not(.love-meter) {
+  position: relative;
+  z-index: 1;
 }
 
 .ambient-petals span {
   position: absolute;
   top: -38px;
   left: var(--petal-left);
-  color: rgba(195, 140, 64, 0.72);
-  font: 25px var(--font-serif);
+  color: rgba(195, 140, 64, 0.34);
+  font: 17px var(--font-serif);
   animation: petal-drift var(--petal-duration) var(--petal-delay) linear infinite;
 }
 
 .ambient-petals span:nth-child(3n) {
-  color: rgba(132, 45, 66, 0.48);
-  font-size: 20px;
+  color: rgba(132, 45, 66, 0.26);
+  font-size: 14px;
 }
 
 .tap-sparkles span {
@@ -1664,15 +1675,6 @@ footer span {
   color: #e9b65c;
   font-size: 24px;
   animation: tap-twinkle 0.75s ease-out forwards;
-}
-
-.cursor-heart-trail {
-  position: fixed;
-  z-index: 30;
-  pointer-events: none;
-  color: #9a4255;
-  font: 22px/1 var(--font-serif);
-  animation: cursor-heart-fade 0.76s ease-out forwards;
 }
 
 .love-meter {
@@ -1799,17 +1801,6 @@ footer span {
   }
 }
 
-@keyframes cursor-heart-fade {
-  from {
-    opacity: 0.85;
-    transform: translate(-50%, -50%) scale(0.55) rotate(-12deg);
-  }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -120%) scale(1.25) rotate(18deg);
-  }
-}
-
 @keyframes love-note-pop {
   from {
     opacity: 0;
@@ -1822,8 +1813,14 @@ footer span {
 }
 
 @media (max-width: 720px) {
-  .ambient-petals span:nth-child(n + 10) {
+  .ambient-petals span:nth-child(n + 8) {
     display: none;
+  }
+
+  .music-toggle {
+    top: 13px;
+    right: 13px;
+    bottom: auto;
   }
 
   .love-meter {
