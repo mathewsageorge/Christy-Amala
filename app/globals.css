@@ -1796,3 +1796,176 @@ footer span {
     top: calc(100% + 6px);
   }
 }
+
+/* Opening invitation — modern editorial cover */
+.invitation-gate {
+  padding: 26px;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(177, 77, 103, 0.38), transparent 30%),
+    radial-gradient(circle at 8% 100%, rgba(235, 188, 106, 0.15), transparent 26%),
+    linear-gradient(135deg, #2d1421 0%, #6c2438 51%, #2f1926 100%);
+}
+
+.invitation-gate:before {
+  inset: 26px;
+  border-color: rgba(246, 212, 151, 0.32);
+  border-radius: 22px;
+}
+
+.invitation-gate:after {
+  content: '';
+  inset: 0;
+  background-image: radial-gradient(rgba(244, 203, 124, 0.36) 1px, transparent 1.4px);
+  background-position: 0 0;
+  background-size: 32px 32px;
+  opacity: 0.25;
+}
+
+.gate-content {
+  width: min(780px, calc(100vw - 78px));
+  min-height: min(680px, calc(100svh - 100px));
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(48px, 7vw, 76px) clamp(26px, 7vw, 86px);
+  border: 1px solid rgba(246, 213, 157, 0.42);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255, 245, 224, 0.1), rgba(39, 10, 20, 0.12));
+  box-shadow: 0 32px 100px rgba(24, 7, 14, 0.26), inset 0 1px rgba(255, 245, 224, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.gate-monogram {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 34px;
+  color: #f9edd7;
+  font: 500 21px/1 var(--font-serif);
+  letter-spacing: 0.22em;
+}
+
+.gate-monogram i {
+  color: #e8b75c;
+  font-size: 17px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.gate-kicker {
+  color: #f1cb7e;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+}
+
+.gate-content h1 {
+  max-width: 720px;
+  margin: 19px 0 23px;
+  color: #fffaf0;
+  font-size: clamp(70px, 10vw, 132px);
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.gate-content h1 > span:not(.gate-name) {
+  color: #efc873;
+  font-style: italic;
+}
+
+.gate-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(240px, 70%);
+  color: #e9bb68;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.gate-rule:before,
+.gate-rule:after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 197, 111, 0.75));
+}
+
+.gate-rule:after {
+  transform: rotate(180deg);
+}
+
+.gate-note {
+  margin: 26px auto 34px;
+  color: rgba(255, 246, 227, 0.88);
+  font-size: clamp(19px, 2.1vw, 25px);
+}
+
+.open-invitation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: min(100%, 294px);
+  border: 1px solid rgba(255, 245, 220, 0.76);
+  border-radius: 14px;
+  background: linear-gradient(120deg, #f4cd83, #eab863);
+  padding: 8px 9px 8px 24px;
+  color: #572333;
+  box-shadow: 0 14px 32px rgba(17, 4, 9, 0.28), inset 0 0 0 1px rgba(255, 248, 224, 0.4);
+}
+
+.open-invitation span {
+  margin: 0;
+  font-size: 10px;
+}
+
+.open-invitation b {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 9px;
+  background: #68263a;
+  color: #ffe9b9;
+  font: 500 20px/1 var(--font-serif);
+  transition: transform 0.24s ease;
+}
+
+.open-invitation:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(120deg, #f8db9c, #edbf70);
+}
+
+.open-invitation:hover b {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 720px) {
+  .invitation-gate {
+    padding: 13px;
+  }
+
+  .invitation-gate:before {
+    inset: 13px;
+    border-radius: 17px;
+  }
+
+  .gate-content {
+    width: min(100%, calc(100vw - 42px));
+    min-height: calc(100svh - 64px);
+    padding: 42px 22px;
+    border-radius: 23px;
+  }
+
+  .gate-monogram {
+    margin-bottom: 28px;
+  }
+
+  .gate-content h1 {
+    font-size: clamp(70px, 21vw, 94px);
+    line-height: 0.82;
+  }
+
+  .gate-note {
+    margin: 23px auto 30px;
+  }
+}

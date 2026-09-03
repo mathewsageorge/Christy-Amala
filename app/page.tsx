@@ -225,8 +225,10 @@ export default function Home() {
           aria-label="Wedding invitation cover"
         >
           <div className="gate-content">
-            <div className="floating-envelope" aria-hidden="true">
-              ✉
+            <div className="gate-monogram" aria-hidden="true">
+              <span>C</span>
+              <i>♡</i>
+              <span>A</span>
             </div>
             <p className="gate-kicker">You are invited</p>
             <h1>
@@ -240,7 +242,8 @@ export default function Home() {
               type="button"
               onClick={openInvitation}
             >
-              <span>✦</span> Open the invitation
+              <span>Open the invitation</span>
+              <b aria-hidden="true">↗</b>
             </button>
           </div>
         </section>
