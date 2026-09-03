@@ -193,12 +193,11 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.45;
+  opacity: 0.34;
   background:
     radial-gradient(circle at 5% 95%, #d7a34b 0 1px, transparent 2px) 0 0/22px
       22px,
     radial-gradient(circle at 88% 16%, #e4bf77 0, transparent 2px) 0 0/38px 38px;
-  mask-image: linear-gradient(90deg, #000, transparent);
 }
 .hero-copy,
 .hero-photo-wrap {
