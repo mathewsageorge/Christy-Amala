@@ -3,19 +3,27 @@
 import {
   type CSSProperties,
   type FormEvent,
+  type PointerEvent as ReactPointerEvent,
   useEffect,
   useRef,
   useState,
 } from 'react';
 
 const weddingDate = new Date('2027-01-03T16:00:00+05:30').getTime();
-const calendarEvent = `data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20270103T160000\nDTEND:20270103T213000\nSUMMARY:Wedding of Christy & Amala\nLOCATION:St. Peter's Malankara Syrian Catholic Cathedral\, Pathanamthitta\nDESCRIPTION:Wedding ceremony at 4:00 PM. Reception at St. Peter's Parish Auditorium from 6:00 PM to 9:30 PM.\nEND:VEVENT\nEND:VCALENDAR`)}`;
+const calendarEvent = `data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20270103T160000\nDTEND:20270103T213000\nSUMMARY:Wedding of Christy & Amala\nLOCATION:St. Peter's Malankara Syrian Catholic Cathedral\, Pathanamthitta\nDESCRIPTION:Wedding ceremony at 4:00 PM. Reception at St. Peter's Auditorium\, Saint Peters Junction\, Chittoor\, Pathanamthitta\, Kerala 689645 from 6:00 PM to 9:30 PM.\nEND:VEVENT\nEND:VCALENDAR`)}`;
 const celebrationParticles = Array.from({ length: 22 }, (_, index) => ({
   left: `${(index * 37 + 4) % 96}%`,
   delay: `${(index % 7) * 0.11}s`,
   duration: `${2.1 + (index % 5) * 0.16}s`,
   drift: `${(index % 2 ? 1 : -1) * (22 + (index % 4) * 9)}px`,
-  symbol: index % 3 === 0 ? '✦' : '•',
+  symbol: index % 4 === 0 ? '♡' : index % 3 === 0 ? '✦' : '✦',
+}));
+const ambientPetals = Array.from({ length: 15 }, (_, index) => ({
+  left: `${(index * 29 + 3) % 98}%`,
+  delay: `${(index % 8) * -1.25}s`,
+  duration: `${10 + (index % 5) * 1.8}s`,
+  drift: `${index % 2 ? 38 : -32}px`,
+  symbol: index % 3 === 0 ? '♡' : '✦',
 }));
 
 function Countdown() {
@@ -61,6 +69,13 @@ export default function Home() {
   >('idle');
   const [showCelebration, setShowCelebration] = useState(false);
   const [rsvpGuestName, setRsvpGuestName] = useState('');
+  const [loveProgress, setLoveProgress] = useState(0);
+  const [showLoveNote, setShowLoveNote] = useState(false);
+  const [tapSparkles, setTapSparkles] = useState<
+    Array<{ id: number; left: number; top: number }>
+  >([]);
+  const heroPhotoRef = useRef<HTMLDivElement>(null);
+  const sparkleTimers = useRef<number[]>([]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -100,6 +115,44 @@ export default function Home() {
     return () => observer.disconnect();
   }, [isInvitationOpen]);
 
+  useEffect(() => {
+    const updateLoveProgress = () => {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      setLoveProgress(available > 0 ? Math.round((window.scrollY / available) * 100) : 0);
+    };
+    updateLoveProgress();
+    window.addEventListener('scroll', updateLoveProgress, { passive: true });
+    window.addEventListener('resize', updateLoveProgress);
+    return () => {
+      window.removeEventListener('scroll', updateLoveProgress);
+      window.removeEventListener('resize', updateLoveProgress);
+    };
+  }, [isInvitationOpen]);
+
+  useEffect(
+    () => () => sparkleTimers.current.forEach((timer) => window.clearTimeout(timer)),
+    [],
+  );
+
+  useEffect(() => {
+    if (!isInvitationOpen || !window.matchMedia('(hover: hover)').matches) return;
+    let lastHeart = 0;
+    const leaveHeart = (event: PointerEvent) => {
+      const now = performance.now();
+      if (now - lastHeart < 72) return;
+      lastHeart = now;
+      const heart = document.createElement('span');
+      heart.className = 'cursor-heart-trail';
+      heart.textContent = '♡';
+      heart.style.left = `${event.clientX}px`;
+      heart.style.top = `${event.clientY}px`;
+      document.body.appendChild(heart);
+      window.setTimeout(() => heart.remove(), 760);
+    };
+    document.addEventListener('pointermove', leaveHeart);
+    return () => document.removeEventListener('pointermove', leaveHeart);
+  }, [isInvitationOpen]);
+
   const toggleMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -122,6 +175,42 @@ export default function Home() {
         .play()
         .then(() => setIsPlaying(true))
         .catch(() => setIsPlaying(false));
+  };
+
+  const addTapSparkle = (event: ReactPointerEvent<HTMLElement>) => {
+    if (!isInvitationOpen || event.pointerType === 'mouse') return;
+    const id = Date.now() + Math.random();
+    setTapSparkles((sparkles) => [
+      ...sparkles.slice(-11),
+      { id, left: event.clientX, top: event.clientY },
+    ]);
+    sparkleTimers.current.push(
+      window.setTimeout(
+        () => setTapSparkles((sparkles) => sparkles.filter((sparkle) => sparkle.id !== id)),
+        780,
+      ),
+    );
+  };
+
+  const movePhoto = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const photo = heroPhotoRef.current;
+    if (!photo || event.pointerType === 'touch' && event.isPrimary === false) return;
+    const bounds = photo.getBoundingClientRect();
+    const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1));
+    const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1));
+    photo.style.setProperty('--photo-tilt-x', `${y * -2.2}deg`);
+    photo.style.setProperty('--photo-tilt-y', `${x * 2.2}deg`);
+    photo.style.setProperty('--photo-shift-x', `${x * 4}px`);
+    photo.style.setProperty('--photo-shift-y', `${y * 4}px`);
+  };
+
+  const resetPhoto = () => {
+    const photo = heroPhotoRef.current;
+    if (!photo) return;
+    photo.style.setProperty('--photo-tilt-x', '0deg');
+    photo.style.setProperty('--photo-tilt-y', '0deg');
+    photo.style.setProperty('--photo-shift-x', '0px');
+    photo.style.setProperty('--photo-shift-y', '0px');
   };
 
   const submitRsvp = async (event: FormEvent<HTMLFormElement>) => {
@@ -170,9 +259,13 @@ export default function Home() {
           aria-label="Wedding invitation cover"
         >
           <div className="gate-content">
+            <div className="floating-envelope" aria-hidden="true">
+              ✉
+            </div>
             <p className="gate-kicker">You are invited</p>
             <h1>
-              Christy <span>&amp;</span> Amala
+              <span className="gate-name">Christy</span>{' '}
+              <span>&amp;</span> <span className="gate-name">Amala</span>
             </h1>
             <div className="gate-rule">✦</div>
             <p className="gate-note">A beautiful beginning awaits.</p>
@@ -186,7 +279,50 @@ export default function Home() {
           </div>
         </section>
       )}
-      <main className={`site-content${isInvitationOpen ? ' is-open' : ''}`}>
+      <main
+        className={`site-content${isInvitationOpen ? ' is-open' : ''}`}
+        onPointerDown={addTapSparkle}
+      >
+        <div className="ambient-petals" aria-hidden="true">
+          {ambientPetals.map((petal, index) => (
+            <span
+              key={index}
+              style={
+                {
+                  '--petal-left': petal.left,
+                  '--petal-delay': petal.delay,
+                  '--petal-duration': petal.duration,
+                  '--petal-drift': petal.drift,
+                } as CSSProperties
+              }
+            >
+              {petal.symbol}
+            </span>
+          ))}
+        </div>
+        <div className="tap-sparkles" aria-hidden="true">
+          {tapSparkles.map((sparkle) => (
+            <span
+              key={sparkle.id}
+              style={{ left: sparkle.left, top: sparkle.top }}
+            >
+              ✦
+            </span>
+          ))}
+        </div>
+        <div className="love-meter" aria-label={`Love meter: ${loveProgress}% through the invitation`}>
+          <span>♡</span>
+          <div className="love-meter-track">
+            <i
+              style={
+                {
+                  height: `${loveProgress}%`,
+                  '--love-progress': `${loveProgress}%`,
+                } as CSSProperties
+              }
+            />
+          </div>
+        </div>
         <button
           className="music-toggle"
           type="button"
@@ -222,7 +358,13 @@ export default function Home() {
               Join our celebration <span>↓</span>
             </a>
           </div>
-          <div className="hero-photo-wrap">
+          <div
+            className="hero-photo-wrap"
+            ref={heroPhotoRef}
+            onPointerMove={movePhoto}
+            onPointerLeave={resetPhoto}
+            onPointerUp={resetPhoto}
+          >
             <div className="arch-photo">
               <img src="/christy-amala.jpg" alt="Christy and Amala together" />
             </div>
@@ -294,17 +436,17 @@ export default function Home() {
               <h3>6:00–9:30 PM</h3>
               <p className="schedule-date">Following the ceremony</p>
               <div className="card-rule" />
-              <h4>St. Peter&apos;s Parish Auditorium</h4>
+              <h4>St. Peter&apos;s Auditorium</h4>
               <p>
-                St. Peter&apos;s Junction,
+                Saint Peters Junction, Chittoor,
                 <br />
-                Pathanamthitta
+                Pathanamthitta, Kerala 689645
               </p>
               <a
                 className="text-link"
                 target="_blank"
                 rel="noreferrer"
-                href="https://www.google.com/maps/search/?api=1&query=St.+Peter%27s+Parish+Auditorium%2C+Pathanamthitta"
+                href="https://www.google.com/maps/search/?api=1&query=St.+Peter%27s+Auditorium%2C+Saint+Peters+Junction%2C+Chittoor%2C+Pathanamthitta%2C+Kerala+689645"
               >
                 Get directions ↗
               </a>
@@ -334,9 +476,20 @@ export default function Home() {
                 Pathanamthitta
               </p>
             </article>
-            <div className="family-heart" aria-hidden="true">
-              ♡
-            </div>
+            <button
+              className={`family-heart${showLoveNote ? ' is-surprise-open' : ''}`}
+              type="button"
+              aria-label="A little love note from Christy and Amala"
+              aria-expanded={showLoveNote}
+              onClick={() => setShowLoveNote((shown) => !shown)}
+            >
+              <span aria-hidden="true">♡</span>
+              {showLoveNote && (
+                <span className="love-note" role="status">
+                  Made with love by Christy &amp; Amala ✦
+                </span>
+              )}
+            </button>
             <article>
               <p className="family-label">The bride</p>
               <h3>Amala</h3>
@@ -391,8 +544,8 @@ export default function Home() {
                 </div>
                 <h2>Thank you{rsvpGuestName ? `, ${rsvpGuestName}` : ''}!</h2>
                 <p>
-                  Your RSVP has been received. We are so happy to celebrate this
-                  beautiful day with you.
+                  Yay! We saved you a place at the celebration. We are so happy
+                  to celebrate this beautiful day with you ✨
                 </p>
                 <p className="thanks-signoff">With love, Christy &amp; Amala</p>
               </div>
