@@ -13,9 +13,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Christy & Amala | Wedding Celebration',
     description: 'Join us on 03 January 2027.',
+    type: 'website',
+    siteName: 'Christy & Amala',
+    url: '/',
     images: [{ url: '/og.png', width: 1792, height: 1024, alt: 'Christy and Amala wedding celebration' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Christy & Amala | Wedding Celebration', images: ['/og.png'] },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Christy & Amala | Wedding Celebration',
+    description: 'Join us on 03 January 2027.',
+    images: ['/og.png'],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
