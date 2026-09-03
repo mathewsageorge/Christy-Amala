@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const result = await response.json().catch(() => null);
-    if (!result?.ok) {
+    if (!result?.ok && result?.status !== 'ok') {
       throw new Error(result?.error || 'Google Sheets could not save the RSVP.');
     }
 

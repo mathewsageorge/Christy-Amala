@@ -63,8 +63,9 @@ export default function Home() {
         body: JSON.stringify({
           name: formData.get('name'),
           phone: formData.get('phone'),
-          attendance,
-          guestCount: attendance === 'yes' ? formData.get('guestCount') : 0,
+          email: '',
+          attending: attendance,
+          guests: attendance === 'yes' ? formData.get('guestCount') : 0,
           message: formData.get('message'),
         }),
       });
