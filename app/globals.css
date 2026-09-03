@@ -1443,3 +1443,142 @@ footer span {
     font-size: clamp(50px, 15vw, 67px);
   }
 }
+
+/* RSVP — compact evening-card treatment */
+.rsvp {
+  padding: 92px 24px 100px;
+  background: #fbf2e2;
+}
+
+.rsvp:before {
+  display: none;
+}
+
+.rsvp-intro {
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+
+.rsvp-intro h2 {
+  font-size: clamp(43px, 4.5vw, 61px);
+}
+
+.rsvp-form {
+  max-width: 590px;
+  padding: 30px 32px 32px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(140deg, #57202f, #752d40);
+  box-shadow: 0 22px 52px rgba(78, 28, 42, 0.22);
+}
+
+.rsvp-form:before,
+.rsvp-form:after {
+  display: none;
+}
+
+.rsvp-form-mark,
+.rsvp-form > label,
+.rsvp-form legend {
+  color: #f4d79d;
+}
+
+.rsvp-form-mark {
+  margin: 0 0 2px;
+  color: #fff5e1;
+}
+
+.rsvp-form-mark span {
+  color: #efc474;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  border: 1px solid rgba(255, 242, 213, 0.42);
+  background: rgba(255, 252, 246, 0.97);
+}
+
+.rsvp-form fieldset {
+  border-top-color: rgba(246, 218, 165, 0.32);
+}
+
+.attendance-options label {
+  border-color: rgba(255, 242, 213, 0.3);
+  background: rgba(255, 252, 246, 0.97);
+}
+
+.attendance-options label:has(input:checked) {
+  border-color: #efc474;
+  background: #f8e6c8;
+}
+
+.rsvp-submit {
+  background: linear-gradient(100deg, #efc473, #f7db9d);
+  color: #5a2030;
+  box-shadow: 0 8px 18px rgba(25, 8, 14, 0.24);
+}
+
+.rsvp-submit:hover:not(:disabled) {
+  background: #fff0c9;
+}
+
+.rsvp-status {
+  color: #f9e5bd;
+}
+
+.rsvp-status.error {
+  color: #ffd5d5;
+}
+
+.rsvp-success-inline {
+  min-height: 435px;
+  max-width: 590px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(140deg, #57202f, #752d40);
+  box-shadow: 0 22px 52px rgba(78, 28, 42, 0.22);
+}
+
+.rsvp-success-inline .rsvp-thanks {
+  margin: 24px;
+  padding: 42px 34px 34px;
+  border-radius: 14px;
+}
+
+.thanks-signoff {
+  margin: 0;
+  color: #873549;
+  font: italic 500 20px var(--font-serif);
+}
+
+@media (max-width: 720px) {
+  .rsvp {
+    padding: 72px 19px 78px;
+  }
+
+  .rsvp-intro {
+    margin-bottom: 24px;
+  }
+
+  .rsvp-intro h2 {
+    font-size: clamp(42px, 13vw, 54px);
+  }
+
+  .rsvp-form {
+    padding: 25px 18px 22px;
+  }
+
+  .rsvp-success-inline {
+    min-height: 420px;
+  }
+
+  .rsvp-success-inline .rsvp-thanks {
+    margin: 18px;
+    padding: 36px 20px 28px;
+  }
+
+  .rsvp-success-inline .rsvp-thanks h2 {
+    font-size: clamp(46px, 14vw, 60px);
+  }
+}
