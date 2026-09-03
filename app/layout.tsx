@@ -4,9 +4,10 @@ import './globals.css';
 
 const serif = Cormorant_Garamond({ variable: '--font-serif', subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 const sans = DM_Sans({ variable: '--font-sans', subsets: ['latin'], weight: ['400', '500', '600'] });
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://christy-amala-wedding.mathewsgeorge202.chatgpt.site'),
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: 'Christy & Amala | Wedding Celebration',
   description: 'Join us to celebrate the wedding of Christy and Amala on 03 January 2027.',
   openGraph: {
