@@ -9,11 +9,11 @@ const socialImage = '/og.png?v=wa-20260903';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Christy & Amala | Wedding Celebration',
-  description: 'Join us to celebrate the wedding of Christy and Amala on 03 January 2027.',
+  title: 'You’re invited — Christy & Amala',
+  description: 'Tap to open our wedding invitation · 03 January 2027.',
   openGraph: {
-    title: 'Christy & Amala | Wedding Celebration',
-    description: 'Join us on 03 January 2027.',
+    title: 'You’re invited — Christy & Amala',
+    description: 'Tap to open our wedding invitation · 03 January 2027.',
     type: 'website',
     siteName: 'Christy & Amala',
     url: '/',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Christy & Amala | Wedding Celebration',
-    description: 'Join us on 03 January 2027.',
+    title: 'You’re invited — Christy & Amala',
+    description: 'Tap to open our wedding invitation · 03 January 2027.',
     images: [socialImage],
   },
 };
