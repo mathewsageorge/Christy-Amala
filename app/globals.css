@@ -1807,9 +1807,7 @@ footer span {
 }
 
 .invitation-gate:before {
-  inset: 26px;
-  border-color: rgba(246, 212, 151, 0.32);
-  border-radius: 22px;
+  display: none;
 }
 
 .invitation-gate:after {
@@ -1945,8 +1943,7 @@ footer span {
   }
 
   .invitation-gate:before {
-    inset: 13px;
-    border-radius: 17px;
+    display: none;
   }
 
   .gate-content {
