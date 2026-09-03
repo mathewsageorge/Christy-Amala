@@ -479,11 +479,19 @@ a {
   align-items: center;
   text-align: center;
 }
+.family-grid:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid #d6b87d;
+}
 .family-grid article {
   padding: 30px 20px;
 }
 .family-grid article:first-child {
-  border-right: 1px solid #d6b87d;
+  border-right: 0;
 }
 .family-label {
   color: var(--wine);
@@ -516,6 +524,11 @@ a {
 .family-heart {
   position: relative;
   z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  justify-self: center;
   color: var(--wine);
   font: 400 48px var(--font-serif);
   background: var(--paper);
@@ -1180,7 +1193,10 @@ footer span {
   }
   .family-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 0;
+  }
+  .family-grid:before {
+    display: none;
   }
   .family-grid article {
     padding: 25px 12px;
@@ -1190,8 +1206,10 @@ footer span {
     border-bottom: 1px solid #d6b87d;
   }
   .family-heart {
-    position: absolute;
-    top: calc(50% - 25px);
+    position: relative;
+    width: 58px;
+    height: 58px;
+    margin: -29px auto -5px;
     font-size: 42px;
   }
   .rsvp-intro {
