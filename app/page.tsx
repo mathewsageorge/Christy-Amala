@@ -3,7 +3,6 @@
 import { type FormEvent, useEffect, useRef, useState } from 'react';
 
 const weddingDate = new Date('2027-01-03T16:00:00+05:30').getTime();
-const rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbwsIn-KPhir3gSDn4G6gtot8RmlUGXHqf5rJVNi1lAePVoLrVGAkPT33ssK1kt3W9mQ/exec';
 const calendarEvent = `data:text/calendar;charset=utf-8,${encodeURIComponent(`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20270103T160000\nDTEND:20270103T213000\nSUMMARY:Wedding of Christy & Amala\nLOCATION:St. Peter's Malankara Syrian Catholic Cathedral\, Pathanamthitta\nDESCRIPTION:Wedding ceremony at 4:00 PM. Reception at St. Peter's Parish Auditorium from 6:00 PM to 9:30 PM.\nEND:VEVENT\nEND:VCALENDAR`)}`;
 
 function Countdown() {
@@ -58,10 +57,9 @@ export default function Home() {
     setRsvpStatus('submitting');
 
     try {
-      await fetch(rsvpEndpoint, {
+      const response = await fetch('/api/rsvp', {
         method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.get('name'),
           phone: formData.get('phone'),
@@ -70,6 +68,7 @@ export default function Home() {
           message: formData.get('message'),
         }),
       });
+      if (!response.ok) throw new Error('RSVP could not be saved.');
       form.reset();
       setAttendance('yes');
       setRsvpStatus('success');
