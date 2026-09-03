@@ -5,7 +5,7 @@ import './globals.css';
 const serif = Cormorant_Garamond({ variable: '--font-serif', subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 const sans = DM_Sans({ variable: '--font-sans', subsets: ['latin'], weight: ['400', '500', '600'] });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://christy-amala.vercel.app';
-const socialImage = '/og.png?v=wa-20260903';
+const socialImage = '/whatsapp-preview.jpg';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Christy & Amala',
     url: '/',
-    images: [{ url: socialImage, width: 1792, height: 1024, alt: 'Christy and Amala wedding celebration' }],
+    images: [{ url: socialImage, width: 1200, height: 630, alt: 'Christy and Amala wedding celebration' }],
   },
   twitter: {
     card: 'summary_large_image',
