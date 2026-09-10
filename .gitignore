@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.vercel/
+.sites-runtime/
+.test-build/
+*.tsbuildinfo
+.env*
+!.env.example
+playwright-report/
+test-results/
+.DS_Store
+Thumbs.db
+*.log

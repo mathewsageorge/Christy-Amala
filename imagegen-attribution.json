@@ -1,0 +1,17 @@
+{
+  "mode": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "ivory-curtain-texture.png",
+      "prompt": "Use case: photorealistic-natural\nAsset type: portrait fabric texture for a luxury wedding website curtain panel, 1024x1536.\nPrimary request: Soft luxury warm ivory curtain fabric, straight vertical soft folds across the entire canvas. Edge-to-edge textile.\nStyle/medium: Photorealistic close-up of delicate ivory linen-silk fabric, refined and subtle.\nComposition/framing: Front-facing flat fabric texture; no visible top or bottom curtain edges. Straight vertical soft folds of gently varied widths, full portrait canvas.\nLighting/mood: Even diffuse lighting, low contrast, delicate neutral shadows, calm elegant mood.\nColor palette: Very pale warm ivory with neutral beige-grey shading. No yellow-gold tone.\nConstraints: Texture only. No objects, no text, no seal, no room, no curtain rod, no tiebacks, no decorative shapes.",
+      "inspection": "Accepted first attempt. Soft edge-to-edge ivory linen texture with straight vertical folds, no objects or text.",
+      "attempts": 1
+    },
+    {
+      "file": "christy-amala-social-card.png",
+      "prompt": "Use case: ads-marketing\nAsset type: Landscape social sharing card for a wedding website; 1536x800, approximately 1200x630 ratio; legible in a WhatsApp preview.\nPrimary request: High-quality bespoke wedding stationery typography, simple art-directed spacious composition.\nScene/backdrop: Warm ivory paper background #f8f4ed with very subtle fine paper grain.\nStyle/medium: Refined editorial wedding stationery with typography and delicate champagne fine rules.\nColor palette: Warm ivory #f8f4ed, deep burgundy #65263b type, muted champagne fine rules.\nComposition/framing: Spacious centered horizontal card. Small widely spaced sans-serif announcement near upper center. Large elegant editorial high-contrast serif couple names as the prominent central focal point. Date and location centered below in refined small spaced lettering with sufficient size for social previews. Thin discreet champagne rules above and below the date/location block.\nText (verbatim; exact spelling and punctuation):\n\"WE ARE GETTING MARRIED\"\n\"Christy & Amala\"\n\"SUNDAY, 03 JANUARY 2027\"\n\"PATHANAMTHITTA, KERALA\"\nConstraints: Render these four lines only, each once. Couple names most prominent. No people, no stock couples, no hearts, no florals, no excessive gold, no other text, no logos or watermarks.",
+      "inspection": "Accepted first attempt. All four required text lines accurately rendered. Burgundy serif names prominent on ivory paper; fine champagne rules. No people, hearts, or florals.",
+      "attempts": 1
+    }
+  ]
+}
