@@ -108,44 +108,36 @@ h2 em { color:var(--burgundy); font-weight:400; }
 
 /* Native method=dialog form lets guests enter even before JS or media loads. */
 .invitation-locked { overflow:hidden; }
-/* Royal stationery floats over softly lit, independently gathered silk panels. */
-.invitation-gate { --gate-ink:#665031; --gate-gold:#99733e; position:fixed; inset:0; margin:0; padding:0; border:0; width:100%; height:100%; max-width:none; max-height:none; color:var(--gate-ink); background:transparent; overflow:auto; z-index:60; perspective:1400px; }
+/* Modern ribbon entrance. Motion controls the three satin layers and reveal. */
+.invitation-gate { position:fixed; inset:0; margin:0; padding:0; border:0; width:100%; height:100%; max-width:none; max-height:none; color:#473d32; background:transparent; overflow:auto; z-index:60; }
 .invitation-gate::backdrop { background:transparent; }
-.gate-scenery { position:fixed; inset:0; overflow:hidden; pointer-events:none; }
-.gate-veil { position:absolute; inset:0; background:#f8f0e2; opacity:1; transition:opacity 2.1s ease .7s; pointer-events:none; }
-.curtain-panel { position:absolute; top:-3%; bottom:-3%; width:50.2%; background:#e9ddc7; transition:transform 2.35s cubic-bezier(.68,.02,.2,1) .65s; will-change:transform; backface-visibility:hidden; }
-.curtain-panel::before { content:""; position:absolute; inset:0; background-image:linear-gradient(180deg,#80633322,transparent 38%,#bf9d5715),url('/images/ivory-curtain.webp'); background-position:center; background-size:cover; }
-.curtain-panel::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#90744525,transparent 24%,#fff8e81a 70%,#77552830); border-right:1px solid #f8e7bb; box-shadow:inset -17px 0 23px -23px #433116; }
-.curtain-left { left:0; transform-origin:left top; }
-.curtain-right { right:0; transform-origin:right top; transition-delay:.76s; }
-.curtain-right::before,.curtain-right::after { transform:scaleX(-1); }
-.gate-content { position:relative; z-index:1; min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 18px; perspective:1400px; }
-.gate-prelude,.gate-location { position:absolute; margin:0; color:#786344; text-transform:uppercase; font-size:11px; letter-spacing:.25em; line-height:1.5; transition:opacity .4s ease,transform .6s ease; }
-.gate-prelude { top:35px; }
-.gate-location { bottom:32px; font-size:10px; letter-spacing:.2em; }
-.royal-invitation { width:min(440px,86vw); aspect-ratio:2/3; position:relative; perspective:1400px; container-type:inline-size; transition:opacity .65s ease,transform 1.05s cubic-bezier(.25,.6,.2,1); transform-origin:center 70%; }
-.royal-card { position:absolute; inset:0; background:#faf5e9 url('/images/royal-frame.webp') center/100% 100% no-repeat; box-shadow:0 2px 3px #8f70351c,0 17px 37px -12px #72562836,0 45px 90px -50px #7256287a; animation:card-arrival 1.2s cubic-bezier(.2,.75,.25,1) both; }
-.royal-card::after { content:""; position:absolute; inset:0; background:linear-gradient(110deg,transparent 20%,#fffefa00 35%,#fffefa60 48%,#fffefa00 62%,transparent 80%); background-size:300% 100%; background-position:110% 0; pointer-events:none; animation:card-lustre 3.4s ease .9s both; }
-.royal-card-content { position:absolute; inset:18% 14% 13%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.gate-kicker { text-transform:uppercase; color:#82693f; font-size:clamp(10px,2.6cqw,12px); letter-spacing:.23em; margin:0 0 5cqw; }
-.royal-card h2 { display:flex; flex-direction:column; align-items:center; font-family:var(--serif); font-weight:400; font-size:19cqw; line-height:.87; letter-spacing:-.045em; margin:0; color:#99713a; background:linear-gradient(110deg,#6e4b25 3%,#ae8446 23%,#826030 43%,#b18b49 65%,#725128 94%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 1px 0 #fff5d72b; }
-.royal-card h2 i { font-size:.44em; font-weight:400; line-height:1; margin:1.5cqw 0 2cqw; }
-.gate-date { margin:5.5cqw 0 6.5cqw; font-size:clamp(10px,2.65cqw,12px); letter-spacing:.13em; text-transform:uppercase; white-space:nowrap; }
-.open-button { display:flex; align-items:center; justify-content:center; gap:13px; min-height:48px; padding:10px 16px; border:1px solid #bda071; background:linear-gradient(120deg,#fff9e999,#e8d7ac55,#fffaedaa); color:#71542c; font-family:var(--sans); font-size:clamp(12px,3cqw,13px); letter-spacing:.035em; transition:background .3s,box-shadow .3s; }
-.open-arrow { font-size:23px; line-height:1; transition:transform .3s; }
-.open-button:focus-visible { outline:1px solid #967137; outline-offset:5px; }
-.open-button:disabled { cursor:default; }
-.gate-note { font-family:var(--serif); color:#907852; font-size:4.5cqw; font-style:italic; margin:3cqw 0 0; line-height:1.3; }
-.is-opening .royal-invitation { opacity:0; transform:translate3d(0,-55px,120px) rotateX(12deg) scale(1.04); pointer-events:none; }
-.is-opening .gate-prelude,.is-opening .gate-location { opacity:0; transform:translateY(-8px); }
-.is-opening .curtain-left { transform:translate3d(-107%,-1%,0) scaleX(.64) rotate(-1deg); }
-.is-opening .curtain-right { transform:translate3d(107%,-1%,0) scaleX(.64) rotate(1deg); }
-.is-opening .gate-veil { opacity:0; }
-@keyframes card-arrival { from { opacity:0; transform:translateY(20px) rotateX(5deg); } to { opacity:1; transform:translateY(0) rotateX(0); } }
-@keyframes card-lustre { from { background-position:110% 0; } to { background-position:-20% 0; } }
-@media(hover:hover) { .open-button:hover { background:#f1e2c3; box-shadow:0 4px 16px #a17a3820; }.open-button:hover .open-arrow { transform:translateX(4px); } }
-@media(min-width:761px) and (min-height:600px) { .royal-invitation { width:min(440px,calc((100svh - 190px) * .6667)); } }
-@media(max-height:650px) { .gate-content { padding:70px 18px; }.royal-invitation { width:310px; }.gate-prelude { top:24px; }.gate-location { bottom:23px; } }
+.gate-wash { position:fixed; inset:0; background:radial-gradient(ellipse at 50% 35%,#fbf9f4 0,#f0ebe1 75%); pointer-events:none; }
+.gate-content { position:relative; min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:95px 22px 85px; overflow:hidden; }
+.gate-prelude,.gate-location { position:absolute; margin:0; color:#847564; font-size:12px; letter-spacing:.11em; line-height:1.6; }
+.gate-prelude { top:32px; font-family:var(--serif); font-size:20px; letter-spacing:0; font-style:italic; }
+.gate-location { bottom:28px; text-transform:uppercase; font-size:10px; letter-spacing:.2em; }
+.ribbon-card { position:relative; width:min(480px,86vw); aspect-ratio:4/5; background:#fffdf8; border:1px solid #e6dccb; border-radius:3px; box-shadow:0 2px 2px #6c533110,0 15px 45px -18px #6c533139,0 50px 100px -65px #6c533157; container-type:inline-size; transform-origin:50% 60%; }
+.ribbon-card::before { content:""; position:absolute; inset:12px; border:1px solid #eee6d8; pointer-events:none; }
+.ribbon-card-heading { position:absolute; left:8%; right:8%; top:10%; }
+.gate-kicker { margin:0 0 6cqw; font-size:clamp(10px,2.5cqw,12px); text-transform:uppercase; letter-spacing:.22em; color:#8e7c63; }
+.ribbon-card h2 { margin:0; display:flex; flex-direction:column; align-items:center; font-family:var(--serif); font-weight:400; font-size:17cqw; line-height:.8; letter-spacing:-.045em; color:#544735; }
+.ribbon-card h2 i { font-size:.44em; font-weight:400; color:#b3915e; line-height:1; margin:1.5cqw 0 2cqw; }
+.ribbon-wrap { position:absolute; top:67%; left:50%; width:110%; aspect-ratio:3/2; transform:translate(-50%,-50%); pointer-events:none; }
+.ribbon-layer { position:absolute; inset:0; background:url('/images/satin-ribbon.webp') center/contain no-repeat; transform-origin:50% 50%; will-change:transform; }
+.ribbon-left { clip-path:inset(0 54% 0 0); }
+.ribbon-right { clip-path:inset(0 0 0 54%); }
+.ribbon-knot { clip-path:inset(0 46% 0 46%); }
+.ribbon-form { position:absolute; inset:0; }
+.ribbon-button { position:absolute; top:53%; left:5%; width:90%; height:37%; border:0; padding:0; background:transparent; color:#796347; }
+.ribbon-button:focus-visible { outline:1px solid #b29367; outline-offset:8px; border-radius:2px; }
+.ribbon-button:disabled { cursor:default; }
+.ribbon-hint { position:absolute; bottom:0; left:0; right:0; display:flex; justify-content:center; align-items:center; gap:13px; font-family:var(--sans); font-size:13px; letter-spacing:.025em; }
+.ribbon-hint>span { font-size:25px; line-height:1; transition:transform .25s ease; }
+.gate-date { position:absolute; bottom:4%; left:0; right:0; margin:0; font-size:clamp(10px,2.6cqw,12px); text-transform:uppercase; color:#8b795f; letter-spacing:.15em; }
+@media(hover:hover) { .ribbon-button:hover .ribbon-hint>span { transform:translateX(5px); }.ribbon-button:hover .ribbon-hint { color:#513e25; } }
+@media(min-width:761px) and (min-height:650px) { .ribbon-card { width:min(480px,calc((100svh - 200px) * .8)); } }
+@media(max-width:760px) { .ribbon-card { aspect-ratio:4/6; }.ribbon-card-heading { top:12%; }.ribbon-card h2 { font-size:19cqw; }.ribbon-wrap { width:110%; top:67%; }.ribbon-button { top:53%;height:37%; }.gate-prelude { font-size:18px; }.gate-date { bottom:4%; } }
+@media(max-height:650px) { .gate-content { padding:65px 22px; }.ribbon-card { width:310px; }.gate-prelude { top:19px; }.gate-location { bottom:19px; } }
 .invitation-entering .name-mask>span { animation:name-reveal 1.25s .55s cubic-bezier(.22,1,.36,1) both; }
 .invitation-entering .name-mask:last-child>span { animation-delay:.75s; }
 .invitation-entering .invitation-line { animation:soft-reveal 1s 1s both; }
@@ -167,7 +159,7 @@ h2 em { color:var(--burgundy); font-weight:400; }
 }
 @media(max-width:374px) { .hero{padding-inline:7%}h1{font-size:75px}.event-details{padding-left:15px}.event-name{padding-left:28px}.event-actions{gap:16px}.countdown-value{font-size:47px} }
 @media(prefers-reduced-motion:reduce) {
-  .curtain-panel,.gate-veil,.gate-content,.royal-invitation,.gate-prelude,.gate-location{transition:none!important}.royal-card,.royal-card::after{animation:none!important}.is-opening .royal-invitation{transform:none}.is-opening .curtain-left,.is-opening .curtain-right{transform:none}.invitation-gate.is-opening{opacity:0;transition:opacity .15s!important}.invitation-entering .name-mask>span,.invitation-entering .invitation-line,.invitation-entering .hero-date,.invitation-entering .portrait-frame img { animation:none!important; transform:none!important; opacity:1!important; }.invitation-entering .portrait-frame::after{display:none}.music-bars.is-playing i{animation:none!important}
+  .invitation-entering .name-mask>span,.invitation-entering .invitation-line,.invitation-entering .hero-date,.invitation-entering .portrait-frame img { animation:none!important; transform:none!important; opacity:1!important; }.invitation-entering .portrait-frame::after{display:none}.music-bars.is-playing i{animation:none!important}
 }
 
 .scripture { max-width:1180px; margin:auto; padding:56px 8% 68px; text-align:center; border-top:1px solid var(--line); }

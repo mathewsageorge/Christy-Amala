@@ -1,15 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useAnimate } from "motion/react";
 import { wedding } from "@/config/wedding";
 import { MusicController, type MusicStatus } from "@/lib/music-controller";
 
 const idleSubscribe = () => () => {};
 const serverMusic = (): MusicStatus => wedding.music.src ? "off" : "unavailable";
-const OPENED_KEY = "ca-invitation-opened-royal";
+const OPENED_KEY = "ca-invitation-opened-ribbon";
 
 export function Experience() {
-  const dialog = useRef<HTMLDialogElement>(null);
+  const [dialog, animate] = useAnimate<HTMLDialogElement>();
+  const started = useRef(false);
   const audio = useRef<MusicController | null>(null);
   const [controller, setController] = useState<MusicController | null>(null);
   const [opening, setOpening] = useState(false);
@@ -25,18 +27,38 @@ export function Experience() {
     dialog.current?.close();
     document.documentElement.classList.remove("invitation-locked");
     document.getElementById("couple-names")?.focus({ preventScroll: true });
-  }, []);
+  }, [dialog]);
 
   const open = useCallback(() => {
-    if (opening) return;
-    audio.current?.open(); // Call within the guest gesture; autoplay is never assumed.
-    try { sessionStorage.setItem(OPENED_KEY, "yes"); } catch { /* Works with storage disabled. */ }
+    if (started.current) return;
+    started.current = true;
+    audio.current?.open(); // Keep playback inside the guest gesture.
+    try { sessionStorage.setItem(OPENED_KEY, "yes"); } catch { /* Optional preference. */ }
     setOpening(true);
     document.documentElement.classList.add("invitation-entering");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Transition completion closes the curtain; this timer is a no-animation fallback.
-    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 3400));
-  }, [opening, finishOpening]);
+    // A guest can still enter if animation support fails or is interrupted.
+    timers.current.push(setTimeout(finishOpening, reduced ? 250 : 2900));
+    void (async () => {
+      try {
+        if (reduced) {
+          await animate(dialog.current, { opacity: 0 }, { duration: .15 });
+        } else {
+          const travel = Math.max(window.innerWidth, 750);
+          await animate([
+            [".ribbon-hint", { opacity: 0, y: 6 }, { duration: .2, at: 0 }],
+            [".ribbon-knot", { scaleX: [1, 1.1, .6], scaleY: [1, .85, .25], opacity: [1, 1, 0] }, { duration: .55, at: 0, ease: "easeInOut" }],
+            [".ribbon-left", { x: [0, -25, -travel], y: [0, -8, -45], rotate: [0, -4, -14], scaleY: [1, .85, .45] }, { duration: 1.35, at: .22, ease: [.42, 0, .16, 1] }],
+            [".ribbon-right", { x: [0, 30, travel], y: [0, 12, 60], rotate: [0, 5, 17], scaleY: [1, .8, .4] }, { duration: 1.4, at: .3, ease: [.42, 0, .16, 1] }],
+            [".ribbon-card", { scale: [1, 1.025, 1.075], y: [0, 0, -24], opacity: [1, 1, 0] }, { duration: 1.05, at: 1.05, times: [0, .25, 1], ease: [.25, .6, .2, 1] }],
+            [".gate-peripheral", { opacity: 0 }, { duration: .4, at: .35 }],
+            [".gate-wash", { opacity: 0 }, { duration: .9, at: 1.2 }],
+          ]);
+        }
+      } catch { /* The native invitation remains usable if motion fails. */ }
+      finishOpening();
+    })();
+  }, [animate, dialog, finishOpening]);
 
   useEffect(() => {
     const music = new MusicController(wedding.music.src, wedding.music.volume);
@@ -57,33 +79,30 @@ export function Experience() {
       music.dispose(); cancelAnimationFrame(frame); activeTimers.forEach(clearTimeout);
       document.documentElement.classList.remove("invitation-locked");
     };
-  }, []);
+  }, [dialog]);
 
   const label = status === "playing" ? "Music on" : status === "loading" ? "Loading music" : status === "resume" ? "Tap to resume music" : status === "unavailable" ? "Music unavailable" : "Music off";
   return <>
-    <dialog ref={dialog} open className={`invitation-gate ${opening ? "is-opening" : ""}`} aria-labelledby="gate-title" onCancel={event => { event.preventDefault(); open(); }} onTransitionEnd={event => {
-      if (!opening) return;
-      const panelFinished = event.propertyName === "transform" && (event.target as HTMLElement).classList.contains("curtain-right");
-      const reducedFinished = event.target === dialog.current && event.propertyName === "opacity";
-      if (panelFinished || reducedFinished) finishOpening();
-    }}>
-      <div className="gate-scenery" aria-hidden="true"><div className="gate-veil"/>
-        <div className="curtain-panel curtain-left"/><div className="curtain-panel curtain-right"/>
-      </div>
+    <dialog ref={dialog} open className={`invitation-gate ${opening ? "is-opening" : ""}`} aria-labelledby="gate-title" onCancel={event => { event.preventDefault(); open(); }}>
+      <div className="gate-wash" aria-hidden="true"/>
       <div className="gate-content">
-        <p className="gate-prelude">With joyful hearts</p>
-        <div className="royal-invitation">
-          <div className="royal-card">
-            <div className="royal-card-content">
-              <p className="gate-kicker">The wedding of</p>
-              <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
-              <p className="gate-date">{wedding.dateShort}</p>
-              <form method="dialog" onSubmit={event => { event.preventDefault(); open(); }}><button className="open-button" type="submit" autoFocus disabled={opening}><span>Open invitation</span><span className="open-arrow" aria-hidden="true">⟶</span></button></form>
-              <p className="gate-note">A lifetime begins.</p>
-            </div>
+        <p className="gate-prelude gate-peripheral">A little knot. A beautiful beginning.</p>
+        <div className="ribbon-card">
+          <div className="ribbon-card-heading">
+            <p className="gate-kicker">Together, forever</p>
+            <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
           </div>
+          <div className="ribbon-wrap" aria-hidden="true">
+            <div className="ribbon-layer ribbon-left"/>
+            <div className="ribbon-layer ribbon-right"/>
+            <div className="ribbon-layer ribbon-knot"/>
+          </div>
+          <form className="ribbon-form" method="dialog" onSubmit={event => { event.preventDefault(); open(); }}>
+            <button className="ribbon-button" type="submit" autoFocus disabled={opening} aria-label="Untie the ribbon and open our invitation"><span className="ribbon-hint">Untie the ribbon <span aria-hidden="true">⟶</span></span></button>
+          </form>
+          <p className="gate-date">{wedding.dateShort}</p>
         </div>
-        <p className="gate-location">{wedding.place}</p>
+        <p className="gate-location gate-peripheral">{wedding.place}</p>
       </div>
     </dialog>
     <nav className="bottom-nav" aria-label="Celebration quick links">

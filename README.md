@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. Fonts, portrait and curtain artwork are local assets; there are no third-party asset requests during a guest visit.
+Open http://127.0.0.1:3000. Fonts, portrait and ribbon artwork are local assets; there are no third-party asset requests during a guest visit.
 
 ```sh
 npm run lint
@@ -31,7 +31,7 @@ Edit **`src/config/wedding.ts`** for the couple's names, family details, event d
 - Venue buttons currently use Google Maps searches with the full venue name and address. Set each `mapUrl` to a confirmed venue pin if desired; no coordinates have been invented.
 - The three calendar downloads are generated from this config during the build: ceremony, reception, and both events. They use an embedded Asia/Kolkata timezone definition. Reception ends at 21:30.
 - Replace `public/images/couple.webp` with an optimized real photograph; set `photo.src`, dimensions and alt text. The supplied unaltered JPG is preserved at `public/images/couple.jpg`. The arched crop is controlled by `.portrait-frame img` in `src/app/globals.css`.
-- Colors, layout and motion are in `src/app/globals.css`. The curtain's native `method="dialog"` form works before JavaScript or media has loaded, so guests can always enter. JavaScript upgrades it to a modal and adds the animated transition. The invitation content itself is server-rendered and stays available if animation code fails.
+- Colors, layout and motion are in `src/app/globals.css`. The ribbon entrance’s native `method="dialog"` form works before JavaScript or media has loaded, so guests can always enter. JavaScript upgrades it to a modal and adds the animated transition. The invitation content itself is server-rendered and stays available if animation code fails.
 
 ## Add your music
 
@@ -75,3 +75,5 @@ The current `siteUrl` identifies a **private Sites review copy**, not a public g
 
 See `QA.md` for checks performed and the remaining real-device music verification. The RSVP form is connected and browser-tested. See GOOGLE-SHEETS.md for the script, column headings and deployment steps. Scripture: 1 Corinthians 13:13, World English Bible (public domain).
 
+
+The current entrance uses Motion (`useAnimate`) for a scoped timeline: release the center knot, slide the two satin ends away, then fade the stationery into the invitation. It uses the existing Motion dependency. Reduced motion replaces this with a short fade. The opening button remains a native dialog form without JavaScript. Library reference: https://motion.dev/docs/react-use-animate.

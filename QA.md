@@ -9,14 +9,14 @@ Verified 10–11 September 2026 against the production static export and the loc
 - TypeScript: passed. `type-check` generates Next.js route types first, so it also works from a clean checkout.
 - Twelve automated behavior tests: passed. RSVP checks cover confirmed saves, non-JSON/sign-in responses, server errors and no automatic retry after an uncertain request. Includes calendar timezone/end-time rules, UTF-8 calendar folding, countdown boundary, complete map queries, no autoplay before opening, lifecycle pause/resume, preserved manual pause and mute, blocked playback retry, multiple-tab ownership with Web Locks, and audio error/cleanup.
 - Browser layouts checked at 360 × 800, 390 × 844, 430 × 932, and 1440 × 1000. No horizontal overflow was detected. Portrait faces remain visible; long venue names wrap; persistent controls have reserved bottom space.
-- Curtain: fresh guest entrance opens, closes, and transfers keyboard focus to the couple's names. Session return/reload does not replay the entrance. The native form can enter before hydration; this choice is preserved once JavaScript loads.
+- Entrance: fresh guest entrance opens, closes, and transfers keyboard focus to the couple's names. Session return/reload does not replay the entrance. The native form can enter before hydration; this choice is preserved once JavaScript loads.
 - No-script fixture: removed every script from the actual exported HTML and opened it in the browser. The native opening button closed the curtain successfully; the invitation and event details remained available.
 - Directions: two distinct Google Maps search URLs contain each full venue name and address. These are clearly constructed searches, not claimed verified coordinates or venue pins.
 - Calendars: all three export files exist. HTTP 200, `text/calendar` and attachment response verified, with correct event contents. The in-app browser's download-event observer timed out, so OS-level file saving was not confirmed through that observer.
 - Countdown: ceremony resolves to 03 January 2027 at 10:30 UTC / 16:00 IST. Before, at, and after the boundary are tested; no negative numbers appear.
 - Supplied MP3: actual browser playback and manual pause verified, including production export playback through the music control. The audio controller reports playing only after the browser emits its playback event.
 - Reduced-motion implementation inspected: simple curtain fade, no hero/image transforms, no looping sound-bar movement, no animated scroll, and section reveals skipped by the media preference.
-- All 16 referenced local export assets resolved; the configured MP3 is also included in the export. Canonical and sharing metadata use the configured origin; the 1200 × 630 sharing image was visually inspected.
+- All 17 referenced local export assets resolved; the configured MP3 is also included in the export. Canonical and sharing metadata use the configured origin; the 1200 × 630 sharing image was visually inspected.
 - Production browser console: no errors observed.
 
 ## Still needed before sharing with guests
@@ -39,3 +39,12 @@ These remaining checks depend on physical devices and the hosting account; they 
 Royal ivory-and-gold entrance revision: production build and ESLint passed. Browser checked at 390 × 844: no overflow, all entrance content fits, opening completes, scroll unlocks, focus moves to the couple names, and the supplied music plays. The session key was versioned so returning reviewers see the redesign once. Reduced motion retains the short fade and the native no-JavaScript opening form remains in place.
 
 Royal artwork and motion: generated one original frame with built-in imagegen and optimized it to a 154 KB WebP. Live HTML names remain readable separately from the artwork. Verified the reveal completes, moves focus to the names, unlocks scrolling, and starts the supplied music in the browser. Reduced motion disables the card arrival, light sweep and perspective effects.
+
+## Current ribbon entrance
+
+- Replaced the curtain and ornate card with modern ivory stationery and transparent champagne satin artwork.
+- Motion useAnimate runs the knot release, separate ribbon ends, and final card/overlay fade. No new library was installed; the existing Motion dependency is used. Selectors are scoped to the dialog and animations clean up with the component.
+- Opening is guarded against double taps and has a fallback timeout. Reduced-motion requests use only a 150ms fade. The native dialog form still opens with no scripts: verified in the script-stripped export fixture.
+- Production build, TypeScript, ESLint, and all 12 existing behavior tests passed. All 17 HTML-referenced export assets resolve; satin-ribbon.webp is included and retains transparency.
+- Inspected desktop composition and final 390 × 844 mobile composition. Names, ribbon, action label and date do not overlap. Mobile dialog client height and scroll height both measured 844px.
+- Browser ribbon release completed, focused the couple names, unlocked scrolling, and started the supplied music. No additional RSVP test was submitted to the live sheet during this visual revision.
