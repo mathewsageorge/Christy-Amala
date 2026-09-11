@@ -13,4 +13,4 @@ The full image-generation prompts are recorded in `imagegen-attribution.json`.
 
 - `public/images/satin-ribbon.webp`: generated with built-in imagegen for the modern ribbon entrance; 1400 × 933 WebP, 168 KB, with transparency. The three visible ribbon pieces use the same artwork with complementary clips, animated using Motion.
 
-- `public/images/love-petal.webp`: one blush rose petal created with built-in imagegen, optimized to a 96 × 96 transparent WebP (3.7 KB), used in the Send some love interaction. Full prompt in `imagegen-attribution.json`.
+- `public/images/love-petal.webp`: one blush rose petal created with built-in imagegen, optimized to a 96 × 96 transparent WebP (3.7 KB), reused in the contained falling-petal interlude with a champagne-gold CSS filter. Full prompt in `imagegen-attribution.json`.

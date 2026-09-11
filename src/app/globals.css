@@ -192,15 +192,18 @@ h2 em { color:var(--burgundy); font-weight:400; }
 .rsvp-form label { display:block; }
 .rsvp-form input,.rsvp-form select,.rsvp-form textarea { display:block; margin-top:9px; }
 
-.send-love { text-align:center; padding:8px 20px 45px; }
-.love-button { display:inline-flex; flex-direction:column; align-items:center; gap:13px; padding:8px 20px; border:0; background:transparent; color:var(--burgundy); border-radius:8px; }
-.love-heart { width:68px; height:68px; border:1px solid #ceaaad; border-radius:50%; display:grid; place-items:center; background:#f6e8e5; box-shadow:0 5px 18px #64283c09; transition:background .25s,box-shadow .25s; }
-.love-label { font-size:14px; letter-spacing:.035em; }
-.love-message { min-height:25px; margin:5px 0 0; color:var(--muted); font-family:var(--serif); font-style:italic; font-size:19px; }
-.love-heart-pulse { animation:love-pulse .55s ease-out; }
-.love-petals { position:fixed; inset:0; z-index:55; overflow:hidden; pointer-events:none; }
-.love-petal { position:absolute; top:0; left:0; background:url('/images/love-petal.webp') center/contain no-repeat; pointer-events:none; will-change:transform,opacity; }
-@keyframes love-pulse { 0%,100%{transform:scale(1)}35%{transform:scale(1.15)}65%{transform:scale(.97)} }
-@media(hover:hover) { .love-button:hover .love-heart { background:#f0dcd9; box-shadow:0 6px 24px #64283c14; } }
-@media(max-width:760px) { .send-love{padding-bottom:34px}.love-message{font-size:18px} }
-@media(prefers-reduced-motion:reduce) { .love-heart-pulse{animation:none}.love-heart{transition:none}.love-petals{display:none} }
+/* A contained decorative interlude: particles never enter adjacent content. */
+.golden-petals { position:relative; isolation:isolate; overflow:hidden; contain:paint; pointer-events:none; max-width:780px; height:180px; margin:-24px auto 26px; }
+.golden-petal-rule { position:absolute; top:50%; left:9%; right:9%; height:1px; background:linear-gradient(90deg,transparent,#c3a67755 22%,transparent 37%,transparent 63%,#c3a67755 78%,transparent); }
+.golden-monogram { position:absolute; inset:0; display:flex; gap:12px; align-items:center; justify-content:center; font-family:var(--serif); font-size:36px; font-weight:400; color:#95733e; }
+.golden-monogram i { font-size:24px; color:#baa078; }
+.golden-petal-lane { position:absolute; top:0; bottom:0; width:32%; overflow:hidden; mask-image:linear-gradient(transparent,#000 16%,#000 72%,transparent); }
+.golden-petal-lane.left { left:3%; }.golden-petal-lane.right { right:3%; }
+.golden-petal-fall { position:absolute; top:-35px; width:var(--size); height:var(--size); opacity:0; }
+.golden-petal-fall>span { display:block; width:100%; height:100%; background:url('/images/love-petal.webp') center/contain no-repeat; filter:sepia(1) saturate(1.35) brightness(1.14); }
+.is-visible .golden-petal-fall { animation:golden-descent var(--duration) var(--delay) linear both; }
+.is-visible .golden-petal-fall>span { animation:golden-turn var(--duration) var(--delay) ease-in-out both; }
+@keyframes golden-descent { 0%{transform:translate3d(0,0,0);opacity:0}15%{opacity:.8}75%{opacity:.65}100%{transform:translate3d(var(--drift),235px,0);opacity:0} }
+@keyframes golden-turn { 0%{transform:rotate(-30deg) rotateY(0deg)}50%{transform:rotate(65deg) rotateY(70deg)}100%{transform:rotate(var(--turn)) rotateY(145deg)} }
+@media(max-width:760px) { .golden-petals{height:160px;margin:-22px 5% 18px}.golden-monogram{font-size:31px;gap:8px}.golden-monogram i{font-size:22px}.golden-petal-lane{width:30%} }
+@media(prefers-reduced-motion:reduce) { .is-visible .golden-petal-fall,.is-visible .golden-petal-fall>span{animation:none}.golden-petal-lane{display:none} }

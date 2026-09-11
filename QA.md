@@ -57,3 +57,10 @@ Royal artwork and motion: generated one original frame with built-in imagegen an
 - Inspected the visible petal burst and 390 × 844 mobile layout. No horizontal overflow was detected at 390px or the default preview width.
 - Reduced-motion handling was inspected in code: it skips particle creation and CSS disables the pulse. Physical OS preference testing remains outstanding.
 - This is a local visual interaction. It sends no messages, stores no reaction count, and makes no RSVP or Google Sheet requests. No new live RSVP test was sent.
+
+## Contained gold-petal replacement
+
+- Removed Send some love, its heart button, thank-you text, and full-screen particle portal.
+- Added a gold C&A monogram interlude below the portrait. Eighteen champagne-tinted petals fall in two clipped side lanes; the central lettering and adjacent sections have reserved clear space.
+- Motion starts on entering view and finishes within five seconds, replaying on re-entry. Reduced-motion CSS hides the particles. The entire decoration is non-interactive and hidden from assistive technology.
+- Production build and TypeScript passed. Browser verified the old button is absent, the new in-view animation starts, and gold petals are visible. At 390px the page has no horizontal overflow. The portrait, decoration and scripture have separate non-overlapping bounds, and each particle lane clips its contents. No RSVP request was made.
