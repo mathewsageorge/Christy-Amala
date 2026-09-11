@@ -18,8 +18,8 @@ export const wedding = {
     endpoint: "https://script.google.com/macros/s/AKfycbwsIn-KPhir3gSDn4G6gtot8RmlUGXHqf5rJVNi1lAePVoLrVGAkPT33ssK1kt3W9mQ/exec",
   },
   families: [
-    { role: "The Groom", name: "Christy", relation: "Son of", parents: "Bikash Babu & Aswathy Bikash", address: "Kattukallil, Mekozhoor, Pathanamthitta" },
-    { role: "The Bride", name: "Amala", relation: "Daughter of", parents: "Binu K. Thomas & Jisa Binu", address: "Kummannooparambil (Mekat), Edappally, Ernakulam" },
+    { role: "The Groom", name: "Dr. Christy", relation: "Son of", parents: "Bikash Babu & Aswathy Bikash", address: "Kattukallil, Mekozhoor, Pathanamthitta" },
+    { role: "The Bride", name: "Dr. Amala", relation: "Daughter of", parents: "Binu K. Thomas & Jisa Binu", address: "Kummannooparambil (Mekat), Edappally, Ernakulam" },
   ],
   ceremony: {
     id: "ceremony", title: "Wedding Ceremony", time: "4:00 PM",
