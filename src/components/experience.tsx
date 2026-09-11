@@ -14,8 +14,18 @@ export function Experience() {
   const [controller, setController] = useState<MusicController | null>(null);
   const [opening, setOpening] = useState(false);
   const [hint, setHint] = useState(false);
+  const finishing = useRef(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const status = useSyncExternalStore(controller?.subscribe ?? idleSubscribe, controller?.getSnapshot ?? serverMusic, serverMusic);
+
+  const finishOpening = useCallback(() => {
+    if (finishing.current) return;
+    finishing.current = true;
+    timers.current.forEach(clearTimeout);
+    dialog.current?.close();
+    document.documentElement.classList.remove("invitation-locked");
+    document.getElementById("couple-names")?.focus({ preventScroll: true });
+  }, []);
 
   const open = useCallback(() => {
     if (opening) return;
@@ -24,12 +34,9 @@ export function Experience() {
     setOpening(true);
     document.documentElement.classList.add("invitation-entering");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    timers.current.push(setTimeout(() => {
-      dialog.current?.close();
-      document.documentElement.classList.remove("invitation-locked");
-      document.getElementById("couple-names")?.focus({ preventScroll: true });
-    }, reduced ? 160 : 1750));
-  }, [opening]);
+    // Transition completion closes the curtain; this timer is a no-animation fallback.
+    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 2200));
+  }, [opening, finishOpening]);
 
   useEffect(() => {
     const music = new MusicController(wedding.music.src, wedding.music.volume);
@@ -54,7 +61,12 @@ export function Experience() {
 
   const label = status === "playing" ? "Music on" : status === "loading" ? "Loading music" : status === "resume" ? "Tap to resume music" : status === "unavailable" ? "Music unavailable" : "Music off";
   return <>
-    <dialog ref={dialog} open className={`invitation-gate ${opening ? "is-opening" : ""}`} aria-labelledby="gate-title" onCancel={event => { event.preventDefault(); open(); }}>
+    <dialog ref={dialog} open className={`invitation-gate ${opening ? "is-opening" : ""}`} aria-labelledby="gate-title" onCancel={event => { event.preventDefault(); open(); }} onTransitionEnd={event => {
+      if (!opening) return;
+      const panelFinished = event.propertyName === "transform" && (event.target as HTMLElement).classList.contains("curtain-panel");
+      const reducedFinished = event.target === dialog.current && event.propertyName === "opacity";
+      if (panelFinished || reducedFinished) finishOpening();
+    }}>
       <div className="curtain-panel curtain-left" aria-hidden="true"/><div className="curtain-panel curtain-right" aria-hidden="true"/>
       <div className="gate-content">
         <p className="eyebrow">An invitation to celebrate</p>
@@ -68,6 +80,7 @@ export function Experience() {
     <nav className="bottom-nav" aria-label="Celebration quick links">
       <a href="#ceremony"><span aria-hidden="true" className="nav-index">01</span>Ceremony</a>
       <a href="#reception"><span aria-hidden="true" className="nav-index">02</span>Reception</a>
+      <a href="#rsvp">RSVP</a>
       <button className="music-control" onClick={() => { if (status === "unavailable") { setHint(!hint); } else audio.current?.toggle(); }} aria-label={status === "playing" ? "Pause music" : label} aria-pressed={status === "playing"} aria-describedby={hint ? "music-hint" : undefined}>
         <span className={`music-bars ${status === "playing" ? "is-playing" : ""}`} aria-hidden="true"><i/><i/><i/><i/></span>
         <span className="music-label">{status === "unavailable" ? "Music off" : label}</span>

@@ -1,6 +1,6 @@
 # Christy & Amala — our wedding invitation
 
-A complete mobile-first invitation for 03 January 2027 in Pathanamthitta, Kerala. Built with Next.js App Router, TypeScript, Tailwind CSS and Motion for React. All pages and calendars are statically exported; there is no backend, analytics or data collection.
+A complete mobile-first invitation for 03 January 2027 in Pathanamthitta, Kerala. Built with Next.js App Router, TypeScript, Tailwind CSS and Motion for React. All pages and calendars are statically exported; RSVP submissions go directly to your Google Apps Script web app and private Google Sheet. There is no site server or analytics.
 
 ## Run locally
 
@@ -35,7 +35,7 @@ Edit **`src/config/wedding.ts`** for the couple's names, family details, event d
 
 ## Add your music
 
-No music was supplied at build time. The invitation remains fully usable without it.
+Your supplied music.mp3.mp3 is included as public/audio/wedding-music.mp3 and configured at restrained volume. The steps below explain replacement.
 
 1. Add an audio file you have permission to use to `public/audio/` (MP3 is a practical cross-browser option).
 2. Set `music.src` to `/audio/your-file.mp3` in the config and add any necessary credit.
@@ -73,4 +73,5 @@ The current `siteUrl` identifies a **private Sites review copy**, not a public g
 
 `public/og.png` is a 1200 × 630 matching invitation card, with page title, description, Open Graph/X metadata, SVG favicon and Apple touch icon. Fonts are Cormorant Garamond and Manrope, self-hosted through Fontsource and distributed under the SIL Open Font License. See `ASSETS.md` for provenance and the image-generation prompts.
 
-See `QA.md` for checks performed and the remaining real-device music verification. No RSVP, contact details, dress code, extra events or relationship story has been added.
+See `QA.md` for checks performed and the remaining real-device music verification. The RSVP form is connected and browser-tested. See GOOGLE-SHEETS.md for the script, column headings and deployment steps. Scripture: 1 Corinthians 13:13, World English Bible (public domain).
+

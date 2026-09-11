@@ -5,6 +5,7 @@
 - `public/og.png`: created with the built-in OpenAI image-generation tool, then resized to 1200 × 630 for social sharing. Inspected for the exact couple's names, date and location.
 - `public/icon.svg` and `public/apple-touch-icon.png`: simple C&A monogram, authored for this invitation.
 - Cormorant Garamond and Manrope: self-hosted via Fontsource, SIL Open Font License. License text is preserved in `licenses/`.
-- Music: none supplied yet; no commercial or substitute track is included.
+- public/audio/wedding-music.mp3: copied without modification from the user-supplied music.mp3.mp3 (4,807,033 bytes).
 
 The full image-generation prompts are recorded in `imagegen-attribution.json`.
+

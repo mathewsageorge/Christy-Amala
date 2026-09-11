@@ -7,6 +7,16 @@ export const wedding = {
   timezone: "Asia/Kolkata",
   place: "Pathanamthitta, Kerala",
   invitation: "With joyful hearts, we invite you to celebrate our wedding.",
+  verse: {
+    text: "But now faith, hope, and love remain—these three. The greatest of these is love.",
+    reference: "1 Corinthians 13:13",
+    translation: "World English Bible",
+    source: "https://ebible.org/engwebu/1CO13.htm",
+  },
+  rsvp: {
+    // Apps Script web app: execute as owner, access set to Anyone.
+    endpoint: "https://script.google.com/macros/s/AKfycbwsIn-KPhir3gSDn4G6gtot8RmlUGXHqf5rJVNi1lAePVoLrVGAkPT33ssK1kt3W9mQ/exec",
+  },
   families: [
     { role: "The Groom", name: "Christy", relation: "Son of", parents: "Bikash Babu & Aswathy Bikash", address: "Kattukallil, Mekozhoor, Pathanamthitta" },
     { role: "The Bride", name: "Amala", relation: "Daughter of", parents: "Binu K. Thomas & Jisa Binu", address: "Kummannooparambil (Mekat), Edappally, Ernakulam" },
@@ -29,7 +39,7 @@ export const wedding = {
   photo: { src: "/images/couple.webp", original: "/images/couple.jpg", width: 720, height: 1280, alt: "Christy and Amala seated together, smiling, with a bouquet of flowers." },
   music: {
     // Add a licensed file to public/audio/ and set src to '/audio/your-file.mp3'.
-    src: null as string | null,
+    src: "/audio/wedding-music.mp3" as string | null,
     volume: 0.35,
     credit: "",
   },
