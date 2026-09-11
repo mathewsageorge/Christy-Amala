@@ -108,56 +108,44 @@ h2 em { color:var(--burgundy); font-weight:400; }
 
 /* Native method=dialog form lets guests enter even before JS or media loads. */
 .invitation-locked { overflow:hidden; }
-/* The entrance uses the original fabric asset, tinted to match the invitation. */
-.invitation-gate { --gate-ink:#f4e7d4; --gate-gold:#d8b893; position:fixed; inset:0; margin:0; padding:0; border:0; width:100%; height:100%; max-width:none; max-height:none; color:var(--gate-ink); background:transparent; overflow:auto; z-index:60; }
+/* Royal stationery floats over softly lit, independently gathered silk panels. */
+.invitation-gate { --gate-ink:#665031; --gate-gold:#99733e; position:fixed; inset:0; margin:0; padding:0; border:0; width:100%; height:100%; max-width:none; max-height:none; color:var(--gate-ink); background:transparent; overflow:auto; z-index:60; perspective:1400px; }
 .invitation-gate::backdrop { background:transparent; }
-.gate-veil { position:fixed; inset:0; background:#251119; opacity:1; transition:opacity 2s cubic-bezier(.2,.65,.3,1) .5s; pointer-events:none; }
-.curtain-panel { position:fixed; top:-2%; bottom:-2%; width:50.2%; background:#4d192b; transition:transform 2.2s cubic-bezier(.65,0,.25,1) .4s; will-change:transform; backface-visibility:hidden; }
-.curtain-panel::before { content:""; position:absolute; inset:0; background-image:linear-gradient(180deg,#21091355,transparent 30%,#24081155),url('/images/ivory-curtain.webp'); background-color:#6b263e; background-blend-mode:multiply; background-position:center; background-size:cover; }
-.curtain-panel::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#13060b65,transparent 28%,#fbd3a909 65%,#19080e55); border-right:1px solid #ddb99224; box-shadow:inset -12px 0 24px -19px #000; }
-.curtain-left { left:0; transform-origin:left center; }
-.curtain-right { right:0; transform-origin:right center; }
+.gate-scenery { position:fixed; inset:0; overflow:hidden; pointer-events:none; }
+.gate-veil { position:absolute; inset:0; background:#f8f0e2; opacity:1; transition:opacity 2.1s ease .7s; pointer-events:none; }
+.curtain-panel { position:absolute; top:-3%; bottom:-3%; width:50.2%; background:#e9ddc7; transition:transform 2.35s cubic-bezier(.68,.02,.2,1) .65s; will-change:transform; backface-visibility:hidden; }
+.curtain-panel::before { content:""; position:absolute; inset:0; background-image:linear-gradient(180deg,#80633322,transparent 38%,#bf9d5715),url('/images/ivory-curtain.webp'); background-position:center; background-size:cover; }
+.curtain-panel::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#90744525,transparent 24%,#fff8e81a 70%,#77552830); border-right:1px solid #f8e7bb; box-shadow:inset -17px 0 23px -23px #433116; }
+.curtain-left { left:0; transform-origin:left top; }
+.curtain-right { right:0; transform-origin:right top; transition-delay:.76s; }
 .curtain-right::before,.curtain-right::after { transform:scaleX(-1); }
-.gate-content { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:100%; padding:105px 28px 88px; transition:opacity .55s ease,transform .75s cubic-bezier(.2,.65,.3,1); }
-.gate-content::before { content:""; position:absolute; inset:24px; border:1px solid #d8b89340; pointer-events:none; }
-.gate-monogram { position:absolute; top:40px; font-family:var(--serif); font-size:27px; letter-spacing:.06em; line-height:1.3; color:var(--gate-gold); }
-.gate-monogram i { font-size:19px; margin-inline:3px; }
-.gate-title-group>.eyebrow { margin:0 0 22px; font-size:12px; font-weight:400; letter-spacing:.32em; color:var(--gate-gold); }
-.gate-content h2 { display:flex; flex-direction:column; align-items:center; margin:0; font-family:var(--serif); font-size:clamp(78px,9vw,130px); font-weight:400; line-height:.85; letter-spacing:-.04em; color:var(--gate-ink); text-shadow:0 2px 24px #19070b20; }
-.gate-content h2 i { font-weight:400; color:var(--gate-gold); font-size:.43em; line-height:1; margin:8px 0 10px; }
-.gate-date { color:var(--gate-gold); font-size:12px; line-height:1.5; letter-spacing:.2em; text-transform:uppercase; margin:31px 0 0; }
-.gate-enter { margin-top:37px; }
-.open-button { display:flex; align-items:center; justify-content:space-between; gap:36px; min-height:56px; padding:13px 23px; border:1px solid #d8b893a6; border-radius:0; background:#f3dfc706; color:var(--gate-ink); font-size:13px; letter-spacing:.03em; transition:background .3s,color .3s,border-color .3s; }
-.open-button>span { font-size:27px; font-weight:300; line-height:1; transition:transform .3s ease; }
-.open-button:focus-visible { outline:1px solid var(--gate-ink); outline-offset:6px; }
+.gate-content { position:relative; z-index:1; min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 18px; perspective:1400px; }
+.gate-prelude,.gate-location { position:absolute; margin:0; color:#786344; text-transform:uppercase; font-size:11px; letter-spacing:.25em; line-height:1.5; transition:opacity .4s ease,transform .6s ease; }
+.gate-prelude { top:35px; }
+.gate-location { bottom:32px; font-size:10px; letter-spacing:.2em; }
+.royal-invitation { width:min(440px,86vw); aspect-ratio:2/3; position:relative; perspective:1400px; container-type:inline-size; transition:opacity .65s ease,transform 1.05s cubic-bezier(.25,.6,.2,1); transform-origin:center 70%; }
+.royal-card { position:absolute; inset:0; background:#faf5e9 url('/images/royal-frame.webp') center/100% 100% no-repeat; box-shadow:0 2px 3px #8f70351c,0 17px 37px -12px #72562836,0 45px 90px -50px #7256287a; animation:card-arrival 1.2s cubic-bezier(.2,.75,.25,1) both; }
+.royal-card::after { content:""; position:absolute; inset:0; background:linear-gradient(110deg,transparent 20%,#fffefa00 35%,#fffefa60 48%,#fffefa00 62%,transparent 80%); background-size:300% 100%; background-position:110% 0; pointer-events:none; animation:card-lustre 3.4s ease .9s both; }
+.royal-card-content { position:absolute; inset:18% 14% 13%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.gate-kicker { text-transform:uppercase; color:#82693f; font-size:clamp(10px,2.6cqw,12px); letter-spacing:.23em; margin:0 0 5cqw; }
+.royal-card h2 { display:flex; flex-direction:column; align-items:center; font-family:var(--serif); font-weight:400; font-size:19cqw; line-height:.87; letter-spacing:-.045em; margin:0; color:#99713a; background:linear-gradient(110deg,#6e4b25 3%,#ae8446 23%,#826030 43%,#b18b49 65%,#725128 94%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 1px 0 #fff5d72b; }
+.royal-card h2 i { font-size:.44em; font-weight:400; line-height:1; margin:1.5cqw 0 2cqw; }
+.gate-date { margin:5.5cqw 0 6.5cqw; font-size:clamp(10px,2.65cqw,12px); letter-spacing:.13em; text-transform:uppercase; white-space:nowrap; }
+.open-button { display:flex; align-items:center; justify-content:center; gap:13px; min-height:48px; padding:10px 16px; border:1px solid #bda071; background:linear-gradient(120deg,#fff9e999,#e8d7ac55,#fffaedaa); color:#71542c; font-family:var(--sans); font-size:clamp(12px,3cqw,13px); letter-spacing:.035em; transition:background .3s,box-shadow .3s; }
+.open-arrow { font-size:23px; line-height:1; transition:transform .3s; }
+.open-button:focus-visible { outline:1px solid #967137; outline-offset:5px; }
 .open-button:disabled { cursor:default; }
-.gate-note { color:#dfc9b6; font-family:var(--serif); font-style:italic; font-size:19px; margin:15px 0 0; line-height:1.5; }
-.gate-location { position:absolute; bottom:36px; margin:0; color:var(--gate-gold); font-size:11px; letter-spacing:.2em; text-transform:uppercase; }
-.is-opening .curtain-left { transform:translate3d(-104%,0,0) scaleX(.72); }
-.is-opening .curtain-right { transform:translate3d(104%,0,0) scaleX(.72); }
-.is-opening .gate-content { opacity:0; transform:translateY(-12px); pointer-events:none; }
+.gate-note { font-family:var(--serif); color:#907852; font-size:4.5cqw; font-style:italic; margin:3cqw 0 0; line-height:1.3; }
+.is-opening .royal-invitation { opacity:0; transform:translate3d(0,-55px,120px) rotateX(12deg) scale(1.04); pointer-events:none; }
+.is-opening .gate-prelude,.is-opening .gate-location { opacity:0; transform:translateY(-8px); }
+.is-opening .curtain-left { transform:translate3d(-107%,-1%,0) scaleX(.64) rotate(-1deg); }
+.is-opening .curtain-right { transform:translate3d(107%,-1%,0) scaleX(.64) rotate(1deg); }
 .is-opening .gate-veil { opacity:0; }
-@media(hover:hover) { .open-button:hover { background:#f4e7d4; color:#4d192b; border-color:#f4e7d4; }.open-button:hover>span{transform:translateX(4px)} }
-@media(max-width:760px) {
-  .gate-content { padding:105px 24px 90px; }
-  .gate-content::before { inset:15px; }
-  .gate-monogram { top:34px; font-size:25px; }
-  .gate-content h2 { font-size:clamp(78px,21vw,104px); }
-  .gate-title-group>.eyebrow { font-size:11px; margin-bottom:26px; letter-spacing:.27em; }
-  .gate-date { font-size:11px; margin-top:30px; letter-spacing:.16em; }
-  .gate-enter { margin-top:34px; }
-  .gate-location { bottom:32px; font-size:10px; letter-spacing:.15em; }
-  .gate-note { font-size:18px; }
-}
-@media(max-height:700px) {
-  .gate-content { padding-top:78px; padding-bottom:70px; }
-  .gate-monogram { top:27px; font-size:23px; }
-  .gate-content h2 { font-size:72px; }
-  .gate-title-group>.eyebrow { margin-bottom:19px; }
-  .gate-date { margin-top:22px; }
-  .gate-enter { margin-top:24px; }
-  .gate-location { bottom:24px; }
-}
+@keyframes card-arrival { from { opacity:0; transform:translateY(20px) rotateX(5deg); } to { opacity:1; transform:translateY(0) rotateX(0); } }
+@keyframes card-lustre { from { background-position:110% 0; } to { background-position:-20% 0; } }
+@media(hover:hover) { .open-button:hover { background:#f1e2c3; box-shadow:0 4px 16px #a17a3820; }.open-button:hover .open-arrow { transform:translateX(4px); } }
+@media(min-width:761px) and (min-height:600px) { .royal-invitation { width:min(440px,calc((100svh - 190px) * .6667)); } }
+@media(max-height:650px) { .gate-content { padding:70px 18px; }.royal-invitation { width:310px; }.gate-prelude { top:24px; }.gate-location { bottom:23px; } }
 .invitation-entering .name-mask>span { animation:name-reveal 1.25s .55s cubic-bezier(.22,1,.36,1) both; }
 .invitation-entering .name-mask:last-child>span { animation-delay:.75s; }
 .invitation-entering .invitation-line { animation:soft-reveal 1s 1s both; }
@@ -179,7 +167,7 @@ h2 em { color:var(--burgundy); font-weight:400; }
 }
 @media(max-width:374px) { .hero{padding-inline:7%}h1{font-size:75px}.event-details{padding-left:15px}.event-name{padding-left:28px}.event-actions{gap:16px}.countdown-value{font-size:47px} }
 @media(prefers-reduced-motion:reduce) {
-  .curtain-panel,.gate-veil,.gate-content{transition:none!important}.is-opening .gate-content{transform:none}.is-opening .curtain-left,.is-opening .curtain-right{transform:none}.invitation-gate.is-opening{opacity:0;transition:opacity .15s!important}.invitation-entering .name-mask>span,.invitation-entering .invitation-line,.invitation-entering .hero-date,.invitation-entering .portrait-frame img { animation:none!important; transform:none!important; opacity:1!important; }.invitation-entering .portrait-frame::after{display:none}.music-bars.is-playing i{animation:none!important}
+  .curtain-panel,.gate-veil,.gate-content,.royal-invitation,.gate-prelude,.gate-location{transition:none!important}.royal-card,.royal-card::after{animation:none!important}.is-opening .royal-invitation{transform:none}.is-opening .curtain-left,.is-opening .curtain-right{transform:none}.invitation-gate.is-opening{opacity:0;transition:opacity .15s!important}.invitation-entering .name-mask>span,.invitation-entering .invitation-line,.invitation-entering .hero-date,.invitation-entering .portrait-frame img { animation:none!important; transform:none!important; opacity:1!important; }.invitation-entering .portrait-frame::after{display:none}.music-bars.is-playing i{animation:none!important}
 }
 
 .scripture { max-width:1180px; margin:auto; padding:56px 8% 68px; text-align:center; border-top:1px solid var(--line); }

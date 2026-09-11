@@ -6,7 +6,7 @@ import { MusicController, type MusicStatus } from "@/lib/music-controller";
 
 const idleSubscribe = () => () => {};
 const serverMusic = (): MusicStatus => wedding.music.src ? "off" : "unavailable";
-const OPENED_KEY = "ca-invitation-opened-v2";
+const OPENED_KEY = "ca-invitation-opened-royal";
 
 export function Experience() {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -35,7 +35,7 @@ export function Experience() {
     document.documentElement.classList.add("invitation-entering");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     // Transition completion closes the curtain; this timer is a no-animation fallback.
-    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 2900));
+    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 3400));
   }, [opening, finishOpening]);
 
   useEffect(() => {
@@ -63,22 +63,25 @@ export function Experience() {
   return <>
     <dialog ref={dialog} open className={`invitation-gate ${opening ? "is-opening" : ""}`} aria-labelledby="gate-title" onCancel={event => { event.preventDefault(); open(); }} onTransitionEnd={event => {
       if (!opening) return;
-      const panelFinished = event.propertyName === "transform" && (event.target as HTMLElement).classList.contains("curtain-panel");
+      const panelFinished = event.propertyName === "transform" && (event.target as HTMLElement).classList.contains("curtain-right");
       const reducedFinished = event.target === dialog.current && event.propertyName === "opacity";
       if (panelFinished || reducedFinished) finishOpening();
     }}>
-      <div className="gate-veil" aria-hidden="true"/>
-      <div className="curtain-panel curtain-left" aria-hidden="true"/><div className="curtain-panel curtain-right" aria-hidden="true"/>
+      <div className="gate-scenery" aria-hidden="true"><div className="gate-veil"/>
+        <div className="curtain-panel curtain-left"/><div className="curtain-panel curtain-right"/>
+      </div>
       <div className="gate-content">
-        <div className="gate-monogram" aria-hidden="true">C <i>&</i> A</div>
-        <div className="gate-title-group">
-          <p className="eyebrow">The wedding of</p>
-          <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
-          <p className="gate-date">{wedding.dateShort}</p>
-        </div>
-        <div className="gate-enter">
-          <form method="dialog" onSubmit={event => { event.preventDefault(); open(); }}><button className="open-button" type="submit" autoFocus disabled={opening}>Open our invitation <span aria-hidden="true">⟶</span></button></form>
-          <p className="gate-note">A day of love. A lifetime together.</p>
+        <p className="gate-prelude">With joyful hearts</p>
+        <div className="royal-invitation">
+          <div className="royal-card">
+            <div className="royal-card-content">
+              <p className="gate-kicker">The wedding of</p>
+              <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
+              <p className="gate-date">{wedding.dateShort}</p>
+              <form method="dialog" onSubmit={event => { event.preventDefault(); open(); }}><button className="open-button" type="submit" autoFocus disabled={opening}><span>Open invitation</span><span className="open-arrow" aria-hidden="true">⟶</span></button></form>
+              <p className="gate-note">A lifetime begins.</p>
+            </div>
+          </div>
         </div>
         <p className="gate-location">{wedding.place}</p>
       </div>

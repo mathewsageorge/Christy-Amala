@@ -9,3 +9,4 @@
 
 The full image-generation prompts are recorded in `imagegen-attribution.json`.
 
+- `public/images/royal-frame.webp`: custom ivory and embossed gold ornamental stationery, generated using built-in imagegen; optimized to 900 × 1350 WebP (154 KB). Text is rendered in HTML, not baked into the artwork. Prompt is included in `imagegen-attribution.json`.
