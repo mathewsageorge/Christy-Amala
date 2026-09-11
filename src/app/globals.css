@@ -191,3 +191,16 @@ h2 em { color:var(--burgundy); font-weight:400; }
 @media(max-width:760px) { .bottom-nav{gap:10px;padding-inline:10px}.music-control{padding-left:10px}.rsvp-form{margin-top:29px}.rsvp-form fieldset{grid-template-columns:1fr;gap:21px}.rsvp{padding-inline:7%} }
 .rsvp-form label { display:block; }
 .rsvp-form input,.rsvp-form select,.rsvp-form textarea { display:block; margin-top:9px; }
+
+.send-love { text-align:center; padding:8px 20px 45px; }
+.love-button { display:inline-flex; flex-direction:column; align-items:center; gap:13px; padding:8px 20px; border:0; background:transparent; color:var(--burgundy); border-radius:8px; }
+.love-heart { width:68px; height:68px; border:1px solid #ceaaad; border-radius:50%; display:grid; place-items:center; background:#f6e8e5; box-shadow:0 5px 18px #64283c09; transition:background .25s,box-shadow .25s; }
+.love-label { font-size:14px; letter-spacing:.035em; }
+.love-message { min-height:25px; margin:5px 0 0; color:var(--muted); font-family:var(--serif); font-style:italic; font-size:19px; }
+.love-heart-pulse { animation:love-pulse .55s ease-out; }
+.love-petals { position:fixed; inset:0; z-index:55; overflow:hidden; pointer-events:none; }
+.love-petal { position:absolute; top:0; left:0; background:url('/images/love-petal.webp') center/contain no-repeat; pointer-events:none; will-change:transform,opacity; }
+@keyframes love-pulse { 0%,100%{transform:scale(1)}35%{transform:scale(1.15)}65%{transform:scale(.97)} }
+@media(hover:hover) { .love-button:hover .love-heart { background:#f0dcd9; box-shadow:0 6px 24px #64283c14; } }
+@media(max-width:760px) { .send-love{padding-bottom:34px}.love-message{font-size:18px} }
+@media(prefers-reduced-motion:reduce) { .love-heart-pulse{animation:none}.love-heart{transition:none}.love-petals{display:none} }

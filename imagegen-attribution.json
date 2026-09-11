@@ -24,6 +24,12 @@
       "prompt": "Use case: product-mockup. Asset type: transparent photographic ribbon overlay for a modern luxury website entrance. ONE photoreal champagne-gold silk satin ribbon tied in a refined elegant bow, with long straight horizontal ribbon bands reaching the full left and right image edges. Genuinely transparent background with an alpha channel. Only the ribbon is visible; no card, paper, backdrop, or cast shadows outside the ribbon. Landscape 1536x1024. Front view flat lay. The bow knot is centered at exactly x50%, y50%. Two beautiful asymmetric natural silk loops span approximately x30% to x70%. Short loose ribbon tails fall downward and stay within the central 50% of the image width. Straight horizontal ribbon bands are 9% of image height thick, centered at y50%, and extend all the way to the left and right image edges. Entire bow and tails fit inside the central 76% of image height, leaving generous transparent upper and lower margins. True woven silk satin, natural dimensional folds, subtle specular highlights, high fidelity textile detail, luxurious modern stationery styling. Muted warm champagne gold, approximately #bda074. No text, objects, glitter, ornamental patterns, illustration, cartoon, or fake checkerboard transparency.",
       "inspection": "Accepted first attempt. True alpha background, natural satin bow. Knot slightly above image center; compensated through placement. Optimized to 1400px wide WebP retaining alpha.",
       "attempts": 1
+    },
+    {
+      "file": "public/images/love-petal.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: transparent PNG particle for a wedding website, used small and repeated as floating petals after a click. ONE single isolated realistic blush pink rose petal. Softly curved organic petal, subtle burgundy pink at base fading to a pale blush tip, front three-quarter view, delicate satin natural petal texture. Square 1024x1024, petal centered and taking 70% of the frame. Truly transparent background with alpha channel, clean cutout edges. One petal only. No background, no cast shadow, no flower, no stem, no text, no watermark. Preserve actual transparency; do not depict a checkerboard.",
+      "inspection": "Accepted first generation. A pink rose petal with real alpha transparency. Optimized to 96px square WebP for small floating particles (3,660 bytes).",
+      "attempts": 1
     }
   ]
 }

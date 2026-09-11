@@ -48,3 +48,12 @@ Royal artwork and motion: generated one original frame with built-in imagegen an
 - Production build, TypeScript, ESLint, and all 12 existing behavior tests passed. All 17 HTML-referenced export assets resolve; satin-ribbon.webp is included and retains transparency.
 - Inspected desktop composition and final 390 × 844 mobile composition. Names, ribbon, action label and date do not overlap. Mobile dialog client height and scroll height both measured 844px.
 - Browser ribbon release completed, focused the couple names, unlocked scrolling, and started the supplied music. No additional RSVP test was submitted to the live sheet during this visual revision.
+
+## Send some love
+
+- Added a heart button beneath the couple photograph. A tap fills and pulses the heart, releases 20 blush rose petals, and displays a thank-you message. Repeated taps create another burst, capped at two concurrent bursts.
+- Production build (including TypeScript) and ESLint passed for this addition.
+- Browser verified pointer and Enter-key activation, repeat activation, 20 particle elements on activation, and removal of the overlay after the animation. No browser console errors were observed.
+- Inspected the visible petal burst and 390 × 844 mobile layout. No horizontal overflow was detected at 390px or the default preview width.
+- Reduced-motion handling was inspected in code: it skips particle creation and CSS disables the pulse. Physical OS preference testing remains outstanding.
+- This is a local visual interaction. It sends no messages, stores no reaction count, and makes no RSVP or Google Sheet requests. No new live RSVP test was sent.

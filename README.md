@@ -77,3 +77,5 @@ See `QA.md` for checks performed and the remaining real-device music verificatio
 
 
 The current entrance uses Motion (`useAnimate`) for a scoped timeline: release the center knot, slide the two satin ends away, then fade the stationery into the invitation. It uses the existing Motion dependency. Reduced motion replaces this with a short fade. The opening button remains a native dialog form without JavaScript. Library reference: https://motion.dev/docs/react-use-animate.
+
+Send some love is a local, playful interaction below the couple portrait. It pulses the heart, shows a thank-you, and animates 20 rose petals per accepted tap using Motion. Rapid taps are throttled and at most two bursts coexist; particles clean up after animation. Reduced motion keeps the thank-you and filled heart without particle movement. It sends no message or request, stores no reaction count, and does not write to the RSVP sheet.
