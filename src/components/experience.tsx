@@ -6,7 +6,7 @@ import { MusicController, type MusicStatus } from "@/lib/music-controller";
 
 const idleSubscribe = () => () => {};
 const serverMusic = (): MusicStatus => wedding.music.src ? "off" : "unavailable";
-const OPENED_KEY = "ca-invitation-opened";
+const OPENED_KEY = "ca-invitation-opened-v2";
 
 export function Experience() {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -35,7 +35,7 @@ export function Experience() {
     document.documentElement.classList.add("invitation-entering");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     // Transition completion closes the curtain; this timer is a no-animation fallback.
-    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 2200));
+    timers.current.push(setTimeout(finishOpening, reduced ? 180 : 2900));
   }, [opening, finishOpening]);
 
   useEffect(() => {
@@ -67,14 +67,20 @@ export function Experience() {
       const reducedFinished = event.target === dialog.current && event.propertyName === "opacity";
       if (panelFinished || reducedFinished) finishOpening();
     }}>
+      <div className="gate-veil" aria-hidden="true"/>
       <div className="curtain-panel curtain-left" aria-hidden="true"/><div className="curtain-panel curtain-right" aria-hidden="true"/>
       <div className="gate-content">
-        <p className="eyebrow">An invitation to celebrate</p>
-        <div className="wax-seal" aria-hidden="true"><span>C <i>&</i> A</span></div>
-        <h2 id="gate-title">Christy <i>&</i> Amala</h2>
-        <p className="gate-date">{wedding.dateShort}</p>
-        <form method="dialog" onSubmit={event => { event.preventDefault(); open(); }}><button className="open-button" type="submit" autoFocus disabled={opening}>Open our invitation <span aria-hidden="true">↗</span></button></form>
-        <p className="gate-note">Made with love. Shared with you.</p>
+        <div className="gate-monogram" aria-hidden="true">C <i>&</i> A</div>
+        <div className="gate-title-group">
+          <p className="eyebrow">The wedding of</p>
+          <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
+          <p className="gate-date">{wedding.dateShort}</p>
+        </div>
+        <div className="gate-enter">
+          <form method="dialog" onSubmit={event => { event.preventDefault(); open(); }}><button className="open-button" type="submit" autoFocus disabled={opening}>Open our invitation <span aria-hidden="true">⟶</span></button></form>
+          <p className="gate-note">A day of love. A lifetime together.</p>
+        </div>
+        <p className="gate-location">{wedding.place}</p>
       </div>
     </dialog>
     <nav className="bottom-nav" aria-label="Celebration quick links">

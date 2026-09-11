@@ -29,9 +29,11 @@ These remaining checks depend on physical devices and the hosting account; they 
 
 ## 11 September update
 
-- Curtains now draw aside over roughly 1.9 seconds with soft acceleration/deceleration, horizontal fabric gathering and subtle edge movement. Completion follows the CSS transition, with a fallback timer; reduced-motion uses a short fade. Opening and focus transfer were checked in the browser.
+- The premium entrance uses burgundy-tinted fabric, champagne type, a fine inset border, and larger stacked names. The title fades first, then the fabric draws aside over 2.2 seconds after a 0.4-second delay. Completion follows the CSS transition, with a fallback timer; reduced-motion uses a short fade. Opening and focus transfer were checked in the browser.
 - Added 1 Corinthians 13:13 (World English Bible, public domain), with a source link.
 - Added the RSVP form and persistent RSVP navigation link. Updated production layouts inspected at 390 × 844 and 1440 × 1000; no horizontal overflow at 360px or 390px.
 - Acceptance reveals the guest-count input with minimum 1; decline sends 0. Name/attendance are required, optional phone/email/message are labelled, and input values are retained on failure.
 - One real RSVP was sent through the website to the supplied public Apps Script endpoint. The browser read status ok and displayed success. Name: TEST — website connection check — please delete. Attendance No, guests 0, no contact details. The Google Sheet itself was not opened; server acknowledgement is the verification evidence. Remove this test row in the sheet.
 - The latest source and ZIP are updated locally. The earlier private Sites deployment has not been republished and GitHub/Vercel push/deployment still requires the user's authenticated terminal/account.
+
+Premium entrance revision: production build and ESLint passed. Browser checked at 390 × 844: no overflow, all entrance content fits, opening completes, scroll unlocks, focus moves to the couple names, and the supplied music plays. The session key was versioned so returning reviewers see the redesign once. Reduced motion retains the short fade and the native no-JavaScript opening form remains in place.
