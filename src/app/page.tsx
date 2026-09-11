@@ -4,7 +4,6 @@ import { Experience } from "@/components/experience";
 import { Reveal } from "@/components/reveal";
 import { Countdown } from "@/components/countdown";
 import { Rsvp } from "@/components/rsvp";
-import { GoldenPetals } from "@/components/golden-petals";
 
 function Flourish({ light = false }: { light?: boolean }) {
   return <svg className={`flourish ${light ? "light" : ""}`} width="154" height="42" viewBox="0 0 154 42" fill="none" aria-hidden="true"><path d="M1 23h44c16 0 21-17 11-17-13 0-5 27 20 27S109 6 97 6c-11 0-6 17 11 17h45M60 23c7-13 16-16 17-16s10 3 17 16" stroke="currentColor" strokeWidth=".8"/></svg>;
@@ -27,7 +26,6 @@ export default function Home() {
         </div>
         <figure className="hero-portrait"><div className="portrait-frame"><Image src={wedding.photo.src} width={wedding.photo.width} height={wedding.photo.height} alt={wedding.photo.alt} sizes="(max-width: 760px) 85vw, 43vw" priority /></div><figcaption><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></figcaption></figure>
       </section>
-      <GoldenPetals/>
       <section className="scripture" aria-label="Our wedding scripture"><Reveal><blockquote><p>{wedding.verse.text}</p><cite><a href={wedding.verse.source} target="_blank" rel="noopener noreferrer" title={wedding.verse.translation}>{wedding.verse.reference}</a></cite></blockquote></Reveal></section>
       <section className="families section" id="families" aria-labelledby="families-title"><Reveal><p className="eyebrow">Our families</p><h2 id="families-title">With love & blessings</h2><div className="family-grid">{wedding.families.map(family=><article key={family.name}><p className="eyebrow">{family.role}</p><h3>{family.name}</h3><p>{family.relation}<br/><strong>{family.parents}</strong></p><p className="family-address">{family.address}</p></article>)}</div><Flourish/></Reveal></section>
       <section className="celebration section" id="celebration" aria-labelledby="celebration-title">

@@ -77,5 +77,3 @@ See `QA.md` for checks performed and the remaining real-device music verificatio
 
 
 The current entrance uses Motion (`useAnimate`) for a scoped timeline: release the center knot, slide the two satin ends away, then fade the stationery into the invitation. It uses the existing Motion dependency. Reduced motion replaces this with a short fade. The opening button remains a native dialog form without JavaScript. Library reference: https://motion.dev/docs/react-use-animate.
-
-A contained champagne-gold petal interlude replaces the former heart button. Petals fall in two clipped side lanes around a C&A monogram when the interlude enters view, finishing within five seconds. They replay on re-entry, never cover adjacent content or intercept clicks, and are disabled for reduced motion. No reactions are stored or sent.

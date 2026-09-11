@@ -191,19 +191,3 @@ h2 em { color:var(--burgundy); font-weight:400; }
 @media(max-width:760px) { .bottom-nav{gap:10px;padding-inline:10px}.music-control{padding-left:10px}.rsvp-form{margin-top:29px}.rsvp-form fieldset{grid-template-columns:1fr;gap:21px}.rsvp{padding-inline:7%} }
 .rsvp-form label { display:block; }
 .rsvp-form input,.rsvp-form select,.rsvp-form textarea { display:block; margin-top:9px; }
-
-/* A contained decorative interlude: particles never enter adjacent content. */
-.golden-petals { position:relative; isolation:isolate; overflow:hidden; contain:paint; pointer-events:none; max-width:780px; height:180px; margin:-24px auto 26px; }
-.golden-petal-rule { position:absolute; top:50%; left:9%; right:9%; height:1px; background:linear-gradient(90deg,transparent,#c3a67755 22%,transparent 37%,transparent 63%,#c3a67755 78%,transparent); }
-.golden-monogram { position:absolute; inset:0; display:flex; gap:12px; align-items:center; justify-content:center; font-family:var(--serif); font-size:36px; font-weight:400; color:#95733e; }
-.golden-monogram i { font-size:24px; color:#baa078; }
-.golden-petal-lane { position:absolute; top:0; bottom:0; width:32%; overflow:hidden; mask-image:linear-gradient(transparent,#000 16%,#000 72%,transparent); }
-.golden-petal-lane.left { left:3%; }.golden-petal-lane.right { right:3%; }
-.golden-petal-fall { position:absolute; top:-35px; width:var(--size); height:var(--size); opacity:0; }
-.golden-petal-fall>span { display:block; width:100%; height:100%; background:url('/images/love-petal.webp') center/contain no-repeat; filter:sepia(1) saturate(1.35) brightness(1.14); }
-.is-visible .golden-petal-fall { animation:golden-descent var(--duration) var(--delay) linear both; }
-.is-visible .golden-petal-fall>span { animation:golden-turn var(--duration) var(--delay) ease-in-out both; }
-@keyframes golden-descent { 0%{transform:translate3d(0,0,0);opacity:0}15%{opacity:.8}75%{opacity:.65}100%{transform:translate3d(var(--drift),235px,0);opacity:0} }
-@keyframes golden-turn { 0%{transform:rotate(-30deg) rotateY(0deg)}50%{transform:rotate(65deg) rotateY(70deg)}100%{transform:rotate(var(--turn)) rotateY(145deg)} }
-@media(max-width:760px) { .golden-petals{height:160px;margin:-22px 5% 18px}.golden-monogram{font-size:31px;gap:8px}.golden-monogram i{font-size:22px}.golden-petal-lane{width:30%} }
-@media(prefers-reduced-motion:reduce) { .is-visible .golden-petal-fall,.is-visible .golden-petal-fall>span{animation:none}.golden-petal-lane{display:none} }

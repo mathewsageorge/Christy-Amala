@@ -64,3 +64,7 @@ Royal artwork and motion: generated one original frame with built-in imagegen an
 - Added a gold C&A monogram interlude below the portrait. Eighteen champagne-tinted petals fall in two clipped side lanes; the central lettering and adjacent sections have reserved clear space.
 - Motion starts on entering view and finishes within five seconds, replaying on re-entry. Reduced-motion CSS hides the particles. The entire decoration is non-interactive and hidden from assistive technology.
 - Production build and TypeScript passed. Browser verified the old button is absent, the new in-view animation starts, and gold petals are visible. At 390px the page has no horizontal overflow. The portrait, decoration and scripture have separate non-overlapping bounds, and each particle lane clips its contents. No RSVP request was made.
+
+## Petal removal
+
+Removed the falling petals and the decorative C&A interlude at the user's request. The hero now leads directly into the scripture section. Removed the component and its animation styles. Production build and TypeScript passed; the exported HTML contains neither the petal section nor the prior Send some love button.
