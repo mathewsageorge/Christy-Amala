@@ -41,7 +41,7 @@ export const wedding = {
     address: "Saint Peters Junction, Chittoor, Pathanamthitta, Kerala 689645",
     mapUrl: null as string | null,
   },
-  photo: { src: "/images/couple.webp", original: "/images/couple.jpg", width: 720, height: 1280, alt: "Christy and Amala seated together, smiling, with a bouquet of flowers." },
+  photo: { src: "/images/couple-portrait.webp", original: "/images/couple.jpg", width: 1200, height: 2131, alt: "Christy and Amala seated together, smiling, with a bouquet of flowers." },
   music: {
     // Add a licensed file to public/audio/ and set src to '/audio/your-file.mp3'.
     src: "/audio/wedding-music.mp3" as string | null,

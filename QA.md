@@ -76,3 +76,9 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 - Added Best wishes from Cripa Elsa Bikash in the closing section.
 - Added the supplied Bikash Babu and Christy Abraham Bikash numbers at the bottom as named tel links, using India's +91 prefix.
 - Production build and TypeScript passed. Export content checks verified every requested name, title, button label and both exact call targets. Browser inspected opening text, best-wishes and contact layout at 390 × 844; no horizontal overflow. Call links were inspected without placing calls. No live RSVP submission was made.
+
+## Replacement portrait and contact heading
+
+- Changed the contact heading to Give us a Call.
+- Replaced the original couple photo with the supplied Picsart_26-02-07_20-00-55-935.jpg. Preserved the JPEG and optimized a 1200 × 2131 WebP with a new filename to avoid stale photo caching; removed the old WebP.
+- Production build and TypeScript passed. At 390 × 844, browser inspection confirmed the new image loaded at 1200px natural width, both faces remain clear within the existing arch, the new contact heading is visible, and there is no horizontal overflow.

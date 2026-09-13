@@ -42,7 +42,7 @@ export default function Home() {
       <Rsvp/>
       <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names">{wedding.couple.names}</p><p className="eyebrow closing-date">{wedding.date}</p><div className="best-wishes"><p>Best wishes from</p><p className="best-wishes-name">{wedding.bestWishes}</p></div><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
       <section className="wedding-contact" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">For any assistance</h2>
+        <h2 id="contact-title">Give us a Call</h2>
         <div className="contact-list">{wedding.contacts.map(contact => <a key={contact.phone} href={`tel:${contact.phone}`} aria-label={`Call ${contact.name} on ${contact.displayPhone}`}><span className="contact-name">{contact.name}</span><span className="contact-number">{contact.displayPhone}</span></a>)}</div>
       </section>
     </main>
