@@ -21,10 +21,10 @@ export default function Home() {
           <p className="eyebrow hero-kicker">Together with our families</p>
           <h1 id="couple-names" tabIndex={-1}><span className="name-mask"><span>{wedding.couple.groom}</span></span><i>&</i><span className="name-mask"><span>{wedding.couple.bride}</span></span></h1>
           <p className="invitation-line">{wedding.invitation}</p>
-          <div className="hero-date"><span>{wedding.date}</span><span>{wedding.place}</span></div>
+          <Reveal kind="date" className="hero-date"><span>{wedding.date}</span><span>{wedding.place}</span><span className="date-rule" aria-hidden="true"/></Reveal>
           <a className="discover" href="#families"><span>Discover the celebration</span><span aria-hidden="true">↓</span></a>
         </div>
-        <figure className="hero-portrait"><div className="portrait-frame"><Image src={wedding.photo.src} width={wedding.photo.width} height={wedding.photo.height} alt={wedding.photo.alt} sizes="(max-width: 760px) 85vw, 43vw" priority /></div><figcaption><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></figcaption></figure>
+        <figure className="hero-portrait"><Reveal kind="portrait"><div className="portrait-frame"><Image src={wedding.photo.src} width={wedding.photo.width} height={wedding.photo.height} alt={wedding.photo.alt} sizes="(max-width: 760px) 85vw, 43vw" priority /></div></Reveal><figcaption><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></figcaption></figure>
       </section>
       <section className="scripture" aria-label="Our wedding scripture"><Reveal><blockquote><p>{wedding.verse.text}</p><cite><a href={wedding.verse.source} target="_blank" rel="noopener noreferrer" title={wedding.verse.translation}>{wedding.verse.reference}</a></cite></blockquote></Reveal></section>
       <section className="families section" id="families" aria-labelledby="families-title"><Reveal><p className="eyebrow">Our families</p><h2 id="families-title">With love & blessings</h2><div className="family-grid">{wedding.families.map(family=><article key={family.name}><p className="eyebrow">{family.role}</p><h3>{family.name}</h3><p>{family.relation}<br/><strong>{family.parents}</strong></p><p className="family-address">{family.address}</p></article>)}</div><Flourish/></Reveal></section>
@@ -42,8 +42,8 @@ export default function Home() {
       <Rsvp/>
       <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names">{wedding.couple.names}</p><p className="eyebrow closing-date">{wedding.date}</p><div className="best-wishes"><p>Best wishes from</p><p className="best-wishes-name">{wedding.bestWishes}</p></div><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
       <section className="wedding-contact" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">Give us a Call</h2>
-        <div className="contact-list">{wedding.contacts.map(contact => <a key={contact.phone} href={`tel:${contact.phone}`} aria-label={`Call ${contact.name} on ${contact.displayPhone}`}><span className="contact-name">{contact.name}</span><span className="contact-number">{contact.displayPhone}</span></a>)}</div>
+        <Reveal><h2 id="contact-title">Give us a Call</h2>
+        <div className="contact-list">{wedding.contacts.map(contact => <a key={contact.phone} href={`tel:${contact.phone}`} aria-label={`Call ${contact.name} on ${contact.displayPhone}`}><span className="contact-name">{contact.name}</span><span className="contact-number">{contact.displayPhone}</span></a>)}</div></Reveal>
       </section>
     </main>
     <footer className="footer"><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></footer>

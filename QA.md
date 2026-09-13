@@ -82,3 +82,13 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 - Changed the contact heading to Give us a Call.
 - Replaced the original couple photo with the supplied Picsart_26-02-07_20-00-55-935.jpg. Preserved the JPEG and optimized a 1200 × 2131 WebP with a new filename to avoid stale photo caching; removed the old WebP.
 - Production build and TypeScript passed. At 390 × 844, browser inspection confirmed the new image loaded at 1200px natural width, both faces remain clear within the existing arch, the new contact heading is visible, and there is no horizontal overflow.
+
+## Invitation animation suite
+
+- Added a single gold reflection clipped inside the couple names after opening. The names return to their burgundy finish.
+- The new portrait reveals progressively inside its arch when it enters view. The date fades in with a drawn gold underline.
+- Reworked section reveals into short staggered entrances, including RSVP and contacts. They wait until the invitation cover closes, observe elements individually, and play once per page load.
+- RSVP and call actions have contained inset glows on hover/focus and a gentle press response. No particles or page-wide overlays were added.
+- Reduced-motion preferences skip reveals and disable shimmer/movement. A preference change cancels running reveal animations. Keyboard focus cancels current animation; already-focused content is not animated. Observers and animations clean up when unmounted. Content remains visible without JavaScript or animation support.
+- Production build and TypeScript passed before browser QA. Browser verified a fresh invitation cover, no photo reveal behind it, then the gold shimmer and active date fade after opening. Inspected the partial arched reveal and final fully visible portrait, settled underline and finished shimmer. No horizontal overflow at desktop width; inspected mobile RSVP layout at 390 × 844. No call was placed and no RSVP submitted.
+- Final rebuild passed after the keyboard-focus guard. Script-stripped export fixture verified native opening, fully visible portrait and burgundy names, zero scripts, and no horizontal overflow at 390px.

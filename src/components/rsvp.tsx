@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { wedding } from "@/config/wedding";
+import { Reveal } from "@/components/reveal";
 import { sendRsvp } from "@/lib/rsvp";
 
 export function Rsvp() {
@@ -36,7 +37,7 @@ export function Rsvp() {
   }
 
   return <section className="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
-    <p className="eyebrow">Kindly reply</p>
+    <Reveal><p className="eyebrow">Kindly reply</p>
     <h2 id="rsvp-title">Will you celebrate with us?</h2>
     <p>We would love to know if you can join us.</p>
     {state === "saved" ? <div className="rsvp-success" role="status"><span aria-hidden="true">♡</span><h3>Thank you for your reply.</h3><p>{attending === "Yes" ? "We can’t wait to celebrate with you!" : "You’ll be with us in spirit. Thank you for letting us know."}</p></div> :
@@ -55,5 +56,5 @@ export function Rsvp() {
         {state === "error" && <p className="rsvp-error" role="alert">We couldn’t confirm that your reply was saved. Your details are still here. Please check with the couple before sending again, as your first reply may have arrived.</p>}
         <noscript><p>Please enable JavaScript to send your RSVP.</p></noscript>
       </form>}
-  </section>;
+  </Reveal></section>;
 }

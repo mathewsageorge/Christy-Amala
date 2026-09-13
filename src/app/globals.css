@@ -141,9 +141,6 @@ h2 em { color:var(--burgundy); font-weight:400; }
 .invitation-entering .name-mask>span { animation:name-reveal 1.25s .55s cubic-bezier(.22,1,.36,1) both; }
 .invitation-entering .name-mask:last-child>span { animation-delay:.75s; }
 .invitation-entering .invitation-line { animation:soft-reveal 1s 1s both; }
-.invitation-entering .hero-date { animation:soft-reveal 1s 1.15s both; }
-.invitation-entering .portrait-frame img { animation:photo-settle 2.1s .45s cubic-bezier(.22,1,.36,1) both; }
-.invitation-entering .portrait-frame::after { content:""; position:absolute; inset:0; background:var(--ivory); animation:photo-mask 1.5s .5s cubic-bezier(.22,1,.36,1) both; }
 @keyframes name-reveal { from { transform:translateY(108%); } to { transform:translateY(0); } }
 @keyframes soft-reveal { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 @keyframes photo-settle { from { transform:scale(1.035); } to { transform:scale(1); } }
@@ -202,3 +199,24 @@ h2 em { color:var(--burgundy); font-weight:400; }
 .contact-name { font-size:14px; line-height:1.5; }
 .contact-number { font-size:17px; color:var(--burgundy); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; white-space:nowrap; }
 @media(max-width:760px) { .contact-list{flex-direction:column;gap:18px}.wedding-contact{padding-block:30px}.wedding-contact h2{font-size:29px} }
+
+/* Light stays inside the letters; every entrance plays just once. */
+@supports (background-clip:text) {
+  .invitation-entering .name-mask>span { background:linear-gradient(110deg,var(--burgundy) 40%,#b38c50 47%,#dbc18b 50%,#b38c50 53%,var(--burgundy) 60%); background-size:300% 100%; background-position:200% 50%; background-clip:text; color:transparent; animation:name-reveal 1.25s .55s cubic-bezier(.22,1,.36,1) both,name-glint 1.8s 2.2s ease-in-out both; }
+  .invitation-entering .name-mask:last-child>span { animation-delay:.75s,2.4s; }
+}
+@keyframes name-glint { from{background-position:200% 50%}to{background-position:-200% 50%} }
+.date-rule { display:block; width:58px; height:1px; background:#b38c50; margin:10px auto 0; transform-origin:center; }
+.rsvp-button,.contact-list a,.bottom-nav>a[href="#rsvp"] { transition:transform .22s cubic-bezier(.22,1,.36,1),background-color .3s,box-shadow .3s; }
+.contact-list a { border-radius:5px; }
+.rsvp-button:not(:disabled):active,.contact-list a:active,.bottom-nav>a[href="#rsvp"]:active { transform:scale(.975); }
+@media(hover:hover) {
+  .rsvp-button:not(:disabled):hover { background:#75354b; box-shadow:inset 0 0 0 1px #d9bc8277,inset 0 0 24px #d9bc8226; }
+  .contact-list a:hover,.bottom-nav>a[href="#rsvp"]:hover { background:#b38c500d; box-shadow:inset 0 0 20px #b38c501a; }
+}
+.rsvp-button:focus-visible,.contact-list a:focus-visible,.bottom-nav>a[href="#rsvp"]:focus-visible { box-shadow:inset 0 0 0 1px #b38c50; }
+@media(prefers-reduced-motion:reduce) {
+  .invitation-entering .name-mask>span { background:none;color:var(--burgundy);animation:none!important; }
+  [data-reveal]>* { opacity:1!important;transform:none!important;clip-path:none!important; }
+  .rsvp-button,.contact-list a,.bottom-nav>a[href="#rsvp"] { transition:none;transform:none!important; }
+}
