@@ -68,3 +68,11 @@ Royal artwork and motion: generated one original frame with built-in imagegen an
 ## Petal removal
 
 Removed the falling petals and the decorative C&A interlude at the user's request. The hero now leads directly into the scripture section. Removed the component and its animation styles. Production build and TypeScript passed; the exported HTML contains neither the petal section nor the prior Send some love button.
+
+## 13 September client revisions
+
+- Changed the opening button and accessible label to Click here to open invitation; the existing ribbon animation is preserved.
+- Added Mr./Mrs. before all four parent names, retaining Dr. Christy and Dr. Amala in the family introductions.
+- Added Best wishes from Cripa Elsa Bikash in the closing section.
+- Added the supplied Bikash Babu and Christy Abraham Bikash numbers at the bottom as named tel links, using India's +91 prefix.
+- Production build and TypeScript passed. Export content checks verified every requested name, title, button label and both exact call targets. Browser inspected opening text, best-wishes and contact layout at 390 × 844; no horizontal overflow. Call links were inspected without placing calls. No live RSVP submission was made.

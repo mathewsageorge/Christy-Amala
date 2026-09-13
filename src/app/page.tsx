@@ -40,7 +40,11 @@ export default function Home() {
       </section>
       <section className="anticipation section" aria-labelledby="countdown-title"><Reveal><p className="eyebrow">A moment to look forward to</p><h2 id="countdown-title">Counting the days<br/><em>until we celebrate.</em></h2><Countdown/><p className="countdown-date">{wedding.dateShort} <span aria-hidden="true">·</span> {wedding.ceremony.time} IST</p></Reveal></section>
       <Rsvp/>
-      <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names">{wedding.couple.names}</p><p className="eyebrow closing-date">{wedding.date}</p><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
+      <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names">{wedding.couple.names}</p><p className="eyebrow closing-date">{wedding.date}</p><div className="best-wishes"><p>Best wishes from</p><p className="best-wishes-name">{wedding.bestWishes}</p></div><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
+      <section className="wedding-contact" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">For any assistance</h2>
+        <div className="contact-list">{wedding.contacts.map(contact => <a key={contact.phone} href={`tel:${contact.phone}`} aria-label={`Call ${contact.name} on ${contact.displayPhone}`}><span className="contact-name">{contact.name}</span><span className="contact-number">{contact.displayPhone}</span></a>)}</div>
+      </section>
     </main>
     <footer className="footer"><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></footer>
     <Experience/>

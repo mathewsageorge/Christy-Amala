@@ -98,7 +98,7 @@ export function Experience() {
             <div className="ribbon-layer ribbon-knot"/>
           </div>
           <form className="ribbon-form" method="dialog" onSubmit={event => { event.preventDefault(); open(); }}>
-            <button className="ribbon-button" type="submit" autoFocus disabled={opening} aria-label="Untie the ribbon and open our invitation"><span className="ribbon-hint">Untie the ribbon <span aria-hidden="true">⟶</span></span></button>
+            <button className="ribbon-button" type="submit" autoFocus disabled={opening} aria-label="Click here to open invitation"><span className="ribbon-hint">Click here to open invitation <span aria-hidden="true">⟶</span></span></button>
           </form>
           <p className="gate-date">{wedding.dateShort}</p>
         </div>
