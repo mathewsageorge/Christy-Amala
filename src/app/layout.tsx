@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website", locale: "en_IN", title: `${wedding.couple.names} · We're getting married`,
     description: `${wedding.date} · ${wedding.place}. Join us in celebrating our wedding.`,
-    ...(wedding.siteUrl ? { url: wedding.siteUrl, images: [{ url: `${wedding.siteUrl}/og.png`, width: 1200, height: 630, alt: `${wedding.couple.names} — ${wedding.date}` }] } : {}),
+    ...(wedding.siteUrl ? { url: wedding.siteUrl, images: [{ url: `${wedding.siteUrl}/whatsapp-preview.jpg`, width: 1200, height: 630, type: "image/jpeg", alt: `${wedding.couple.names} — ${wedding.date}` }] } : {}),
   },
-  twitter: { card: "summary_large_image", title: `${wedding.couple.names} · Our Wedding`, description: `${wedding.date} · ${wedding.place}`, ...(wedding.siteUrl ? { images: [`${wedding.siteUrl}/og.png`] } : {}) },
+  twitter: { card: "summary_large_image", title: `${wedding.couple.names} · Our Wedding`, description: `${wedding.date} · ${wedding.place}`, ...(wedding.siteUrl ? { images: [`${wedding.siteUrl}/whatsapp-preview.jpg`] } : {}) },
   icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
 };
 

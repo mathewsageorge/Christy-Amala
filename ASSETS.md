@@ -14,3 +14,7 @@ The full image-generation prompts are recorded in `imagegen-attribution.json`.
 - `public/images/satin-ribbon.webp`: generated with built-in imagegen for the modern ribbon entrance; 1400 × 933 WebP, 168 KB, with transparency. The three visible ribbon pieces use the same artwork with complementary clips, animated using Motion.
 
 - `public/images/love-petal.webp`: one blush rose petal created with built-in imagegen, optimized to a 96 × 96 transparent WebP (3.7 KB), retained as an unused historical asset; the petal feature has been removed. Full prompt in `imagegen-attribution.json`.
+
+## Ribbon social preview — 14 September 2026
+
+`public/whatsapp-preview.jpg` (1200×630, 79,362 bytes) and `public/og.png`: generated with built-in image_gen, then resized and encoded with Sharp. Ivory stationery, champagne ribbon and burgundy names. One candidate, visually verified spelling/date. Full prompt and mode are recorded in `imagegen-attribution.json`.

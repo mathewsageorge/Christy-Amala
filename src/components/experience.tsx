@@ -111,7 +111,7 @@ export function Experience() {
       <a href="#rsvp">RSVP</a>
       <button className="music-control" onClick={() => { if (status === "unavailable") { setHint(!hint); } else audio.current?.toggle(); }} aria-label={status === "playing" ? "Pause music" : label} aria-pressed={status === "playing"} aria-describedby={hint ? "music-hint" : undefined}>
         <span className={`music-bars ${status === "playing" ? "is-playing" : ""}`} aria-hidden="true"><i/><i/><i/><i/></span>
-        <span className="music-label">{status === "unavailable" ? "Music off" : label}</span>
+        <span className="music-label">{status === "playing" ? "Music on" : status === "loading" ? "Loading…" : "Music off"}</span>
       </button>
       {hint && <p id="music-hint" className="music-hint" role="status">Music isn’t available just yet.</p>}
     </nav>

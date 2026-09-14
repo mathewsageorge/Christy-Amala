@@ -99,3 +99,9 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 - Replaced the attendance dropdown with native required radio cards, retaining keyboard controls and an explicit selected state. Acceptance reveals the required guest count (default/minimum 1); declining hides it and keeps the existing zero-guest payload behavior.
 - Preserved name/contact/note fields, the Apps Script endpoint, busy guard, confirmed-save requirement, retained values on failure, and no automatic retries. Restyled the confirmation state and added a call link to the existing uncertain-save message.
 - Production build, TypeScript and all 12 existing tests passed. Browser inspected 1440 × 1000 and 390 × 844; mobile has no horizontal overflow. Verified accepting, keyboard-switching to decline, and guest-count visibility. Empty-name submission was blocked by native validation with focus on the name field; no live RSVP was sent. Browser console contained no errors.
+
+## Mobile refinement — 14 September 2026
+
+Adjusted opening card sizing to viewport height, kept peripheral text in normal flow, enlarged mobile labels, balanced section spacing and headings, stacked RSVP choices, and equalized bottom navigation. Browser checked at 320×568, 360×640, 390×844, 430×932, 844×390 and 1440×1000: no horizontal overflow in measured headings, controls or page. Visually inspected opening at 320/390/430, RSVP at 320 and venues at 390. Opening works in portrait and short landscape; short landscape scrolls vertically. No live RSVP submitted. Physical devices and OS text enlargement not tested. Production build and TypeScript passed.
+
+New generated sharing artwork is 1200×630 JPEG, 79,362 bytes. OG and Twitter metadata use the public Vercel URL and new image filename. PNG fallback refreshed. Changes require Git push and Vercel deployment before public guests see them.

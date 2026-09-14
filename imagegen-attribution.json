@@ -30,6 +30,13 @@
       "prompt": "Use case: photorealistic-natural. Asset type: transparent PNG particle for a wedding website, used small and repeated as floating petals after a click. ONE single isolated realistic blush pink rose petal. Softly curved organic petal, subtle burgundy pink at base fading to a pale blush tip, front three-quarter view, delicate satin natural petal texture. Square 1024x1024, petal centered and taking 70% of the frame. Truly transparent background with alpha channel, clean cutout edges. One petal only. No background, no cast shadow, no flower, no stem, no text, no watermark. Preserve actual transparency; do not depict a checkerboard.",
       "inspection": "Accepted first generation. A pink rose petal with real alpha transparency. Optimized to 96px square WebP for small floating particles (3,660 bytes).",
       "attempts": 1
+    },
+    {
+      "file": "public/whatsapp-preview.jpg",
+      "mode": "Built-in image_gen, generation",
+      "prompt": "Finished wedding WhatsApp/social preview artwork, landscape 1200x630 aspect ratio. Sophisticated flat wedding announcement, ivory stationery, champagne gold satin bow as small corner/side accent, fine gold border, generous margins. Burgundy elegant serif names very large and legible at thumbnail size. All text centered in safe area, names largest, date next, smaller uppercase announcement and location. Exact text: WE’RE GETTING MARRIED; Christy & Amala; 03 JANUARY 2027; PATHANAMTHITTA, KERALA. No Dr titles, URL, extra text, people, photos, watermark. Flat finished artwork, not photographed mockup or screenshot.",
+      "inspection": "First candidate accepted after visual inspection. Resized to 1200x630 and encoded as JPEG; PNG fallback also updated.",
+      "attempts": 1
     }
   ]
 }

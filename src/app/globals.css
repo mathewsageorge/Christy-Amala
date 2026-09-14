@@ -247,3 +247,86 @@ h2 em { color:var(--burgundy); font-weight:400; }
   [data-reveal]>* { opacity:1!important;transform:none!important;clip-path:none!important; }
   .rsvp-button,.contact-list a,.bottom-nav>a[href="#rsvp"] { transition:none;transform:none!important; }
 }
+/* Responsive refinement: keep the invitation proportional and readable on phones. */
+html { background:var(--ivory); -webkit-text-size-adjust:100%; }
+figcaption { flex-wrap:wrap;gap:8px 16px; }
+.gate-content { min-height:100svh; padding:28px max(22px,env(safe-area-inset-right)) 28px max(22px,env(safe-area-inset-left)); gap:24px; }
+.gate-prelude,.gate-location { position:static; }
+.gate-prelude { font-size:20px;line-height:1.4; }
+.gate-location { font-size:12px;letter-spacing:.12em; }
+@media(max-width:760px) {
+  .gate-content { padding-top:max(22px,env(safe-area-inset-top));padding-bottom:max(22px,env(safe-area-inset-bottom));gap:22px; }
+  .gate-prelude { font-size:18px; }
+  .ribbon-card { width:min(400px,calc(100vw - 44px),max(270px,calc((100svh - 150px) / 1.45)));aspect-ratio:1/1.45;flex-shrink:0; }
+  .ribbon-card::before { inset:10px; }
+  .ribbon-card-heading { top:9%;left:7%;right:7%; }
+  .gate-kicker { font-size:12px;letter-spacing:.14em;margin-bottom:5cqw; }
+  .ribbon-card h2 { font-size:clamp(58px,20cqw,80px);line-height:.86; }
+  .ribbon-card h2 i { margin:1.2cqw 0 1.6cqw; }
+  .ribbon-wrap { top:63%;width:106%; }
+  .ribbon-button { top:auto;bottom:10%;left:7%;width:86%;height:48px; }
+  .ribbon-hint { position:static;font-size:14px;line-height:1.45;letter-spacing:0;gap:10px; }
+  .ribbon-hint>span { font-size:23px;flex-shrink:0; }
+  .gate-date { bottom:4%;font-size:12px;letter-spacing:.07em; }
+  .masthead { padding:12px 6%; }
+  .header-date { font-size:12px;letter-spacing:.08em; }
+  .hero { padding:34px 7% 50px;gap:36px; }
+  .hero-copy { padding:0; }
+  .hero-kicker { font-size:12px;letter-spacing:.14em;margin-bottom:22px; }
+  h1 { font-size:clamp(64px,20vw,92px);margin-bottom:22px; }
+  .invitation-line { font-size:16px;line-height:1.75;max-width:30ch;margin:24px auto 20px; }
+  .hero-date { font-size:14px;gap:6px; }
+  .hero-date>span:first-child { font-size:13px;letter-spacing:.025em; }
+  .discover { font-size:14px;margin-top:18px;gap:18px; }
+  .hero-portrait { max-width:420px;padding:0 4px; }
+  .portrait-frame { outline-offset:7px; }
+  figcaption { margin-top:22px;gap:6px 12px; }
+  figcaption>span:first-child { font-size:22px; }
+  figcaption>span:last-child { font-size:12px;letter-spacing:.04em; }
+  .section { padding:56px 7%; }
+  h2,.anticipation h2,.closing h2,.rsvp-intro h2 { font-size:clamp(34px,8.8vw,44px);line-height:1.14;text-wrap:balance; }
+  .eyebrow,.section>.eyebrow { font-size:12px;letter-spacing:.14em; }
+  .family-grid { gap:30px; }
+  .family-grid h3 { font-size:clamp(38px,10vw,48px);margin:12px 0 18px; }
+  .family-grid p { line-height:1.7; }
+  .family-address { font-size:14px; }
+  .family-grid>article+article { padding-top:30px; }
+  .scripture { padding:38px 7% 42px; }
+  .scripture blockquote p { font-size:clamp(26px,7.2vw,32px);line-height:1.35; }
+  .scripture cite { font-size:12px;letter-spacing:.08em; }
+  .celebration { padding:52px 7% 36px; }
+  .event { gap:18px;padding:28px 0; }
+  .event-name,.event-details { padding-left:26px; }
+  .event h3 { font-size:clamp(30px,8vw,37px); }
+  .event-date,.celebration-date { font-size:14px; }
+  .event-actions { gap:12px 18px; }
+  .text-action,.calendar-action,.calendar-both { font-size:14px; }
+  .calendar-both a { gap:12px; }
+  .countdown { gap:5px; }
+  .countdown-value { font-size:clamp(38px,11vw,54px); }
+  .countdown-unit { font-size:12px;letter-spacing:.03em; }
+  .countdown-date { font-size:13px;line-height:1.7; }
+  .rsvp { padding:48px 5%; }
+  .rsvp-layout { gap:25px; }
+  .rsvp-intro>p:not(.eyebrow):not(.rsvp-signature) { font-size:16px;line-height:1.75; }
+  .rsvp-card { padding:24px clamp(16px,5vw,24px); }
+  .attendance-options { grid-template-columns:1fr; }
+  .rsvp-form .attendance-choice { min-height:66px;padding:13px 14px;align-items:center; }
+  .choice-copy { flex-direction:column;gap:3px; }
+  .rsvp-note { font-size:13px; }
+  .closing { padding:45px 7%; }
+  .closing-names { font-size:clamp(34px,9.5vw,43px);text-wrap:balance; }
+  .closing-date { font-size:12px;letter-spacing:.08em; }
+  .wedding-contact h2 { font-size:32px; }
+  .contact-name { font-size:15px; }
+  .footer { font-size:12px;letter-spacing:0;gap:8px 16px;flex-wrap:wrap;padding:18px 6%; }
+  .bottom-nav { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:0 max(6px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(6px,env(safe-area-inset-left));min-height:62px; }
+  .bottom-nav>a,.music-control { justify-content:center;min-width:0;min-height:62px;padding:8px 4px;font-size:13px;line-height:1.3; }
+  .music-control { max-width:none;gap:4px; }
+  .music-label { max-width:none;overflow-wrap:anywhere; }
+  .music-bars { width:12px;gap:2px; }
+}
+@media(max-height:560px) and (orientation:landscape) {
+  .gate-content { padding-block:20px;gap:18px; }
+  .ribbon-card { width:300px;aspect-ratio:1/1.45; }
+}
