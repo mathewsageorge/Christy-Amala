@@ -13,17 +13,17 @@ export function Reveal({ children, className = "", kind = "section" }: { childre
     if (!element || preference.matches || !("IntersectionObserver" in window) || !element.animate) return;
     const animations: Animation[] = [];
     const ease = "cubic-bezier(.22,1,.36,1)";
-    const targets = kind === "portrait" ? [element.querySelector("img")].filter((item): item is HTMLImageElement => !!item) : Array.from(element.children);
+    const targets = kind === "portrait" ? [element.querySelector("img")].filter((item): item is HTMLImageElement => !!item) : Array.from(element.children).flatMap(child => child.matches(".event") ? Array.from(child.querySelectorAll(".event-name h3, .event-date, .event-time, .venue-name, .venue-address, .event-actions")) : child.matches(".section-heading") ? Array.from(child.querySelectorAll(".eyebrow, h2, .celebration-date")) : [child]);
     const seen = new Set<Element>();
     const play = (target: Element, index: number) => {
       if (seen.has(target) || preference.matches) return;
       seen.add(target);
       if (target.contains(document.activeElement)) return;
-      let frames: Keyframe[] = [{ opacity: 0, transform: "translateY(12px)" }, { opacity: 1, transform: "translateY(0)" }];
+      let frames: Keyframe[] = [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "translateY(0)" }];
       let duration = 950;
       let delay = Math.min(index * 90, 270);
       if (kind === "portrait") {
-        frames = [{ opacity: .2, clipPath: "inset(0 0 100% 0)", transform: "scale(1.035)" }, { opacity: 1, clipPath: "inset(0 0 0% 0)", transform: "scale(1)" }];
+        frames = [{ opacity: 0, transform: "scale(1.025)" }, { opacity: 1, transform: "scale(1)" }];
         duration = 1500; delay = 0;
       } else if (target.classList.contains("date-rule")) {
         frames = [{ opacity: 0, transform: "scaleX(0)" }, { opacity: 1, transform: "scaleX(1)" }];

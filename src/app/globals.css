@@ -330,3 +330,23 @@ figcaption { flex-wrap:wrap;gap:8px 16px; }
   .gate-content { padding-block:20px;gap:18px; }
   .ribbon-card { width:300px;aspect-ratio:1/1.45; }
 }
+
+/* One-time atmosphere: contained light, drawn rules and gentle paper tones. */
+main > section { position:relative;isolation:isolate; }
+main > section::before { content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 16%,#d8ba7829,transparent 65%);opacity:0; }
+main > section:not(.hero):not(.closing)::after { content:"";position:absolute;top:0;left:10%;width:80%;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,#b39562,transparent);transform-origin:center;opacity:0; }
+@media(prefers-reduced-motion:no-preference) {
+  .atmosphere-entered::before { animation:quiet-light 2.4s ease-out both; }
+  .atmosphere-entered:not(.hero):not(.closing)::after { animation:gold-rule 1.3s .12s cubic-bezier(.22,1,.36,1) both; }
+  .families.atmosphere-entered,.anticipation.atmosphere-entered,.wedding-contact.atmosphere-entered { animation:paper-warmth 1.8s ease-out both; }
+  .celebration.atmosphere-entered { animation:celebration-warmth 1.8s ease-out both; }
+  .rsvp.atmosphere-entered { animation:reply-warmth 1.8s ease-out both; }
+  .invitation-entering .monogram { background:linear-gradient(110deg,var(--burgundy) 40%,#bc9858 48%,#e4cc99 50%,var(--burgundy) 60%);background-size:300% 100%;background-clip:text;color:transparent;animation:name-glint 2s 1.4s ease-in-out both; }
+  .text-action,.calendar-action,.calendar-both a,.discover,.music-control,.bottom-nav>a,.ribbon-hint { transition:transform .22s cubic-bezier(.22,1,.36,1),color .25s; }
+  .text-action:active,.calendar-action:active,.calendar-both a:active,.discover:active,.music-control:active,.bottom-nav>a:active,.ribbon-button:not(:disabled):active .ribbon-hint { transform:scale(.975); }
+}
+@keyframes quiet-light { 0%{opacity:0} 45%{opacity:1} 100%{opacity:.35} }
+@keyframes gold-rule { from{transform:scaleX(0);opacity:0} to{transform:scaleX(1);opacity:.65} }
+@keyframes paper-warmth { from{background-color:#f8f4ed} to{background-color:#f4eee4} }
+@keyframes celebration-warmth { from{background-color:#f5f0e8} to{background-color:#efe8dd} }
+@keyframes reply-warmth { from{background-color:#f5efe6} to{background-color:#eee6da} }

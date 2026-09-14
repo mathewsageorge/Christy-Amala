@@ -105,3 +105,9 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 Adjusted opening card sizing to viewport height, kept peripheral text in normal flow, enlarged mobile labels, balanced section spacing and headings, stacked RSVP choices, and equalized bottom navigation. Browser checked at 320×568, 360×640, 390×844, 430×932, 844×390 and 1440×1000: no horizontal overflow in measured headings, controls or page. Visually inspected opening at 320/390/430, RSVP at 320 and venues at 390. Opening works in portrait and short landscape; short landscape scrolls vertically. No live RSVP submitted. Physical devices and OS text enlargement not tested. Production build and TypeScript passed.
 
 New generated sharing artwork is 1200×630 JPEG, 79,362 bytes. OG and Twitter metadata use the public Vercel URL and new image filename. PNG fallback refreshed. Changes require Git push and Vercel deployment before public guests see them.
+
+## Subtle motion update — 14 September 2026
+
+Added once-per-visit section warmth, centre-out gold divider lines, and contained background glow. Softened portrait reveal to opacity plus a 2.5% settling zoom. Headings rise 8px; event title, date, time, venue and actions reveal individually. Extended tap feedback to directions, calendars, discovery, music and navigation. Monogram receives one passing gold highlight on invitation opening. Effects wait for cover dismissal, do not intercept pointer events, and respect reduced motion; changing that preference disconnects observers and restores visible content. No continuous scroll handler or new dependency.
+
+Production build/TypeScript and static asset/calendar verification passed. Browser inspection at 390px confirmed section classes, colour endpoints, divider/glow animations, no horizontal overflow and no console errors. RSVP submission was not exercised. Reduced-motion handling reviewed in code, not emulated on a physical device.

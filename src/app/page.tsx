@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionAtmosphere } from "@/components/section-atmosphere";
 import { wedding, mapLink } from "@/config/wedding";
 import { Experience } from "@/components/experience";
 import { Reveal } from "@/components/reveal";
@@ -47,6 +48,7 @@ export default function Home() {
       </section>
     </main>
     <footer className="footer"><span>{wedding.couple.names}</span><span>{wedding.dateNumeric}</span></footer>
+    <SectionAtmosphere/>
     <Experience/>
   </>;
 }
