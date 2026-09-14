@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CoupleName } from "@/components/couple-name";
 import { wedding, mapLink } from "@/config/wedding";
 import { Experience } from "@/components/experience";
 import { Reveal } from "@/components/reveal";
@@ -14,12 +15,12 @@ function Arrow() { return <span aria-hidden="true" className="action-arrow">↗<
 export default function Home() {
   return <>
     <a className="skip-link" href="#celebration">Skip to event details</a>
-    <header className="masthead"><a className="monogram" href="#invitation" aria-label="Christy and Amala, invitation">C <i>&</i> A</a><span className="eyebrow">A celebration of love</span><a className="header-date" href="#celebration">{wedding.dateNumeric}</a></header>
+    <header className="masthead"><a className="monogram" href="#invitation" aria-label={`${wedding.couple.names}, invitation`}>C <i>&</i> A</a><span className="eyebrow">A celebration of love</span><a className="header-date" href="#celebration">{wedding.dateNumeric}</a></header>
     <main id="invitation">
       <section className="hero" aria-labelledby="couple-names">
         <div className="hero-copy">
           <p className="eyebrow hero-kicker">Together with our families</p>
-          <h1 id="couple-names" tabIndex={-1}><span className="name-mask"><span>{wedding.couple.groom}</span></span><i>&</i><span className="name-mask"><span>{wedding.couple.bride}</span></span></h1>
+          <h1 id="couple-names" tabIndex={-1}><span className="name-mask"><span><CoupleName name={wedding.couple.groom}/></span></span><i>&</i><span className="name-mask"><span><CoupleName name={wedding.couple.bride}/></span></span></h1>
           <p className="invitation-line">{wedding.invitation}</p>
           <Reveal kind="date" className="hero-date"><span>{wedding.date}</span><span>{wedding.place}</span><span className="date-rule" aria-hidden="true"/></Reveal>
           <a className="discover" href="#families"><span>Discover the celebration</span><span aria-hidden="true">↓</span></a>

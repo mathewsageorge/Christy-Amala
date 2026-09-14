@@ -99,3 +99,9 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 - Replaced the attendance dropdown with native required radio cards, retaining keyboard controls and an explicit selected state. Acceptance reveals the required guest count (default/minimum 1); declining hides it and keeps the existing zero-guest payload behavior.
 - Preserved name/contact/note fields, the Apps Script endpoint, busy guard, confirmed-save requirement, retained values on failure, and no automatic retries. Restyled the confirmation state and added a call link to the existing uncertain-save message.
 - Production build, TypeScript and all 12 existing tests passed. Browser inspected 1440 × 1000 and 390 × 844; mobile has no horizontal overflow. Verified accepting, keyboard-switching to decline, and guest-count visibility. Empty-name submission was blocked by native validation with focus on the name field; no live RSVP was sent. Browser console contained no errors.
+
+## Doctor titles throughout the invitation
+
+- Centralized display names as Dr. Christy and Dr. Amala; updated the opening card, main heading, caption, RSVP signature, closing, footer, accessible labels, page/sharing text metadata and calendar summaries.
+- Added proportionate smaller titles in the two large name displays and allowed the caption to wrap without overlap. Initial-only C&A monograms remain initials.
+- Production build and TypeScript passed. Browser verified each text placement, inspected the opening card, and checked the main heading at 360px with no horizontal overflow. Calendar summaries include both titles. The existing raster social-preview artwork is unchanged.

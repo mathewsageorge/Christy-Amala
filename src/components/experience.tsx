@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useAnimate } from "motion/react";
+import { CoupleName } from "@/components/couple-name";
 import { wedding } from "@/config/wedding";
 import { MusicController, type MusicStatus } from "@/lib/music-controller";
 
@@ -90,7 +91,7 @@ export function Experience() {
         <div className="ribbon-card">
           <div className="ribbon-card-heading">
             <p className="gate-kicker">Together, forever</p>
-            <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
+            <h2 id="gate-title"><span><CoupleName name={wedding.couple.groom}/></span><i>&</i><span><CoupleName name={wedding.couple.bride}/></span></h2>
           </div>
           <div className="ribbon-wrap" aria-hidden="true">
             <div className="ribbon-layer ribbon-left"/>

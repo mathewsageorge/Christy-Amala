@@ -247,3 +247,7 @@ h2 em { color:var(--burgundy); font-weight:400; }
   [data-reveal]>* { opacity:1!important;transform:none!important;clip-path:none!important; }
   .rsvp-button,.contact-list a,.bottom-nav>a[href="#rsvp"] { transition:none;transform:none!important; }
 }
+.doctor-title { font-size:.42em;letter-spacing:0;vertical-align:.12em; }
+.name-mask>span,.ribbon-card h2>span { white-space:nowrap; }
+figcaption { flex-wrap:wrap;gap:8px 16px; }
+.closing-names { text-wrap:balance; }
