@@ -49,8 +49,7 @@ export const wedding = {
     credit: "",
   },
   closing: "Your presence will make our celebration even more special.",
-  // Set to your verified public Vercel URL before sharing with guests.
-  siteUrl: "https://christy-amala-january-2027.mathewsgeorge202.chatgpt.site",
+  siteUrl: "https://christy-amala.vercel.app",
 } as const;
 
 export function mapLink(event: { venue: string; address: string; mapUrl: string | null }) {
