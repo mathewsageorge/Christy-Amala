@@ -1,6 +1,6 @@
 /** All invitation content lives here. Times are ISO 8601 with India's UTC offset. */
 export const wedding = {
-  couple: { groom: "Dr. Christy", bride: "Dr. Amala", names: "Dr. Christy & Dr. Amala", monogram: "C & A" },
+  couple: { groom: "Christy", bride: "Amala", names: "Christy & Amala", monogram: "C & A" },
   date: "Sunday, 03 January 2027",
   dateShort: "03 January 2027",
   dateNumeric: "03.01.2027",
@@ -41,7 +41,7 @@ export const wedding = {
     address: "Saint Peters Junction, Chittoor, Pathanamthitta, Kerala 689645",
     mapUrl: null as string | null,
   },
-  photo: { src: "/images/couple-portrait.webp", original: "/images/couple.jpg", width: 1200, height: 2131, alt: "Dr. Christy and Dr. Amala seated together, smiling, with a bouquet of flowers." },
+  photo: { src: "/images/couple-portrait.webp", original: "/images/couple.jpg", width: 1200, height: 2131, alt: "Christy and Amala seated together, smiling, with a bouquet of flowers." },
   music: {
     // Add a licensed file to public/audio/ and set src to '/audio/your-file.mp3'.
     src: "/audio/wedding-music.mp3" as string | null,

@@ -43,7 +43,7 @@ export function Rsvp() {
         <h2 id="rsvp-title">A seat for you.<br/><em>A joy for us.</em></h2>
         <p>We would love to celebrate with you.<br/>Let us know if you can join us.</p>
         <div className="rsvp-date"><span>03</span><div>January 2027<small>Sunday · Pathanamthitta</small></div></div>
-        <p className="rsvp-signature">{wedding.couple.groom} <i>&</i> {wedding.couple.bride}</p>
+        <p className="rsvp-signature">Christy <i>&</i> Amala</p>
       </header>
       <div className="rsvp-card">
         <div className="rsvp-card-heading"><span className="eyebrow">Kindly reply</span><span aria-hidden="true">C <i>&</i> A</span></div>
