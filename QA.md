@@ -92,3 +92,10 @@ Removed the falling petals and the decorative C&A interlude at the user's reques
 - Reduced-motion preferences skip reveals and disable shimmer/movement. A preference change cancels running reveal animations. Keyboard focus cancels current animation; already-focused content is not animated. Observers and animations clean up when unmounted. Content remains visible without JavaScript or animation support.
 - Production build and TypeScript passed before browser QA. Browser verified a fresh invitation cover, no photo reveal behind it, then the gold shimmer and active date fade after opening. Inspected the partial arched reveal and final fully visible portrait, settled underline and finished shimmer. No horizontal overflow at desktop width; inspected mobile RSVP layout at 390 × 844. No call was placed and no RSVP submitted.
 - Final rebuild passed after the keyboard-focus guard. Script-stripped export fixture verified native opening, fully visible portrait and burgundy names, zero scripts, and no horizontal overflow at 390px.
+
+## RSVP stationery redesign
+
+- Replaced the full-width form with a two-column editorial introduction and an ivory reply card. Mobile stacks the introduction and card, with full-width attendance options at narrow widths.
+- Replaced the attendance dropdown with native required radio cards, retaining keyboard controls and an explicit selected state. Acceptance reveals the required guest count (default/minimum 1); declining hides it and keeps the existing zero-guest payload behavior.
+- Preserved name/contact/note fields, the Apps Script endpoint, busy guard, confirmed-save requirement, retained values on failure, and no automatic retries. Restyled the confirmation state and added a call link to the existing uncertain-save message.
+- Production build, TypeScript and all 12 existing tests passed. Browser inspected 1440 × 1000 and 390 × 844; mobile has no horizontal overflow. Verified accepting, keyboard-switching to decline, and guest-count visibility. Empty-name submission was blocked by native validation with focus on the name field; no live RSVP was sent. Browser console contained no errors.

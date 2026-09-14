@@ -37,24 +37,42 @@ export function Rsvp() {
   }
 
   return <section className="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
-    <Reveal><p className="eyebrow">Kindly reply</p>
-    <h2 id="rsvp-title">Will you celebrate with us?</h2>
-    <p>We would love to know if you can join us.</p>
-    {state === "saved" ? <div className="rsvp-success" role="status"><span aria-hidden="true">♡</span><h3>Thank you for your reply.</h3><p>{attending === "Yes" ? "We can’t wait to celebrate with you!" : "You’ll be with us in spirit. Thank you for letting us know."}</p></div> :
-      <form className="rsvp-form" onSubmit={submit}>
-        <fieldset disabled={state === "sending"}>
-          <legend className="sr-only">Your RSVP</legend>
-          <label className="rsvp-wide" htmlFor="rsvp-name">Your name <span>(required)</span><input id="rsvp-name" name="name" autoComplete="name" required maxLength={120} onInput={event => event.currentTarget.setCustomValidity("")} /></label>
-          <label htmlFor="rsvp-phone">Phone <span>(optional)</span><input id="rsvp-phone" name="phone" type="tel" autoComplete="tel" maxLength={40}/></label>
-          <label htmlFor="rsvp-email">Email <span>(optional)</span><input id="rsvp-email" name="email" type="email" autoComplete="email" maxLength={254}/></label>
-          <label className="rsvp-wide" htmlFor="rsvp-attending">Will you be attending? <span>(required)</span><select id="rsvp-attending" name="attending" required value={attending} onChange={event => setAttending(event.target.value)}><option value="" disabled>Please choose</option><option value="Yes">Joyfully accepts</option><option value="No">Regretfully declines</option></select></label>
-          {attending === "Yes" && <label className="rsvp-wide" htmlFor="rsvp-guests">Number attending, including you<input id="rsvp-guests" name="guests" type="number" inputMode="numeric" min={1} max={50} step={1} defaultValue={1} required/></label>}
-          <label className="rsvp-wide" htmlFor="rsvp-message">A little note for us <span>(optional)</span><textarea id="rsvp-message" name="message" rows={3} maxLength={2000}/></label>
-          <p className="rsvp-note rsvp-wide">Your reply and any contact details you choose to share will be saved in our private Google Sheet to help us plan the celebration.</p>
-          <button type="submit" className="rsvp-button rsvp-wide">{state === "sending" ? "Sending your reply…" : "Send my RSVP"}<span aria-hidden="true">↗</span></button>
-        </fieldset>
-        {state === "error" && <p className="rsvp-error" role="alert">We couldn’t confirm that your reply was saved. Your details are still here. Please check with the couple before sending again, as your first reply may have arrived.</p>}
-        <noscript><p>Please enable JavaScript to send your RSVP.</p></noscript>
-      </form>}
-  </Reveal></section>;
+    <Reveal className="rsvp-layout">
+      <header className="rsvp-intro">
+        <p className="eyebrow">The pleasure of your company</p>
+        <h2 id="rsvp-title">A seat for you.<br/><em>A joy for us.</em></h2>
+        <p>We would love to celebrate with you.<br/>Let us know if you can join us.</p>
+        <div className="rsvp-date"><span>03</span><div>January 2027<small>Sunday · Pathanamthitta</small></div></div>
+        <p className="rsvp-signature">Christy <i>&</i> Amala</p>
+      </header>
+      <div className="rsvp-card">
+        <div className="rsvp-card-heading"><span className="eyebrow">Kindly reply</span><span aria-hidden="true">C <i>&</i> A</span></div>
+        {state === "saved" ? <div className="rsvp-success" role="status"><span aria-hidden="true">✓</span><h3>Your reply is with us.</h3><p>{attending === "Yes" ? "We can’t wait to celebrate with you!" : "You’ll be with us in spirit. Thank you for letting us know."}</p></div> :
+          <form className="rsvp-form" onSubmit={submit} aria-busy={state === "sending"}>
+            <fieldset className="rsvp-fields" disabled={state === "sending"}>
+              <legend className="sr-only">Your RSVP</legend>
+              <fieldset className="attendance-group rsvp-wide">
+                <legend>Will you be joining us? <span>(required)</span></legend>
+                <div className="attendance-options">
+                  {[{ value: "Yes", title: "Joyfully accepts", note: "I’ll be there" }, { value: "No", title: "Regretfully declines", note: "With you in spirit" }].map(option => <label className="attendance-choice" key={option.value}>
+                    <input type="radio" name="attending" value={option.value} required checked={attending === option.value} onChange={event => setAttending(event.target.value)}/>
+                    <span className="choice-indicator" aria-hidden="true"/>
+                    <span className="choice-copy"><strong>{option.title}</strong><span>{option.note}</span></span>
+                  </label>)}
+                </div>
+              </fieldset>
+              <label className="rsvp-wide" htmlFor="rsvp-name">Your name <span>(required)</span><input id="rsvp-name" name="name" autoComplete="name" required maxLength={120} placeholder="First and last name" onInput={event => event.currentTarget.setCustomValidity("")} /></label>
+              {attending === "Yes" && <label className="rsvp-wide guest-count" htmlFor="rsvp-guests">Number attending, including you<input id="rsvp-guests" name="guests" type="number" inputMode="numeric" min={1} max={50} step={1} defaultValue={1} required/></label>}
+              <label htmlFor="rsvp-phone">Phone <span>(optional)</span><input id="rsvp-phone" name="phone" type="tel" autoComplete="tel" maxLength={40}/></label>
+              <label htmlFor="rsvp-email">Email <span>(optional)</span><input id="rsvp-email" name="email" type="email" autoComplete="email" maxLength={254}/></label>
+              <label className="rsvp-wide" htmlFor="rsvp-message">A little note for us <span>(optional)</span><textarea id="rsvp-message" name="message" rows={2} maxLength={2000} placeholder="Leave us a wish…"/></label>
+              <button type="submit" className="rsvp-button rsvp-wide">{state === "sending" ? "Sending your reply…" : "Send my RSVP"}<span aria-hidden="true">↗</span></button>
+              <p className="rsvp-note rsvp-wide">Your reply and any contact details you share will be saved in our private Google Sheet to help us plan the celebration.</p>
+            </fieldset>
+            {state === "error" && <p className="rsvp-error" role="alert">We couldn’t confirm that your reply was saved. Your details are still here. Please check with the couple before sending again, as your first reply may have arrived. <a href="#contact">Give us a call</a>.</p>}
+            <noscript><p>Please enable JavaScript to send your RSVP.</p></noscript>
+          </form>}
+      </div>
+    </Reveal>
+  </section>;
 }

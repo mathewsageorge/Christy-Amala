@@ -79,3 +79,5 @@ See `QA.md` for checks performed and the remaining real-device music verificatio
 The current entrance uses Motion (`useAnimate`) for a scoped timeline: release the center knot, slide the two satin ends away, then fade the stationery into the invitation. It uses the existing Motion dependency. Reduced motion replaces this with a short fade. The opening button remains a native dialog form without JavaScript. Library reference: https://motion.dev/docs/react-use-animate.
 
 The invitation includes a once-only gold name shimmer, an in-view arched portrait reveal, date and gold underline animation, staggered section entrances, and contained glow/press feedback on RSVP and call actions. Reduced-motion settings keep the invitation still; content remains readable without JavaScript.
+
+The RSVP now uses an ivory reply card with native attendance-choice radios, a conditional guest count, and responsive form spacing. Its Google Sheet connection and confirmed-save/error behavior are unchanged.
