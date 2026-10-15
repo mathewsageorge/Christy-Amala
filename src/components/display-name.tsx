@@ -1,4 +1,4 @@
-/** Keep the professional title attached while preserving the invitation's hierarchy. */
+/** Render the title and name as one typographic line. */
 export function DisplayName({ name }: { name: string }) {
-  return <span className="display-name"><span className="doctor-title">Dr.</span>{" "}{name.replace(/^Dr\.\s*/, "")}</span>;
+  return <span className="display-name">{name}</span>;
 }
