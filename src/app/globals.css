@@ -366,3 +366,38 @@ h1 { font-size:clamp(64px,6vw,94px); }
   figcaption { align-items:baseline; }
   figcaption>span:first-child { font-size:clamp(20px,5.5vw,23px); }
 }
+
+/* Touch-friendly RSVP with a quiet, contained celebration after confirmation. */
+.rsvp-card.is-confirmed { position:relative;overflow:hidden; }
+.rsvp-success { position:relative;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center; }
+.rsvp-success>h3,.rsvp-success>p,.rsvp-success>span { position:relative;z-index:1; }
+.rsvp-success h3:focus { outline:none; }
+.rsvp-success>span { flex-shrink:0;background:#fcfaf6; }
+.rsvp-confetti { position:absolute;inset:-50px -25px;overflow:hidden;pointer-events:none; }
+.rsvp-confetti i { position:absolute;left:var(--x);top:12%;width:6px;height:12px;border-radius:1px;background:linear-gradient(120deg,#ffffff99,var(--foil) 45%,var(--foil));opacity:0;animation:rsvp-confetti var(--duration) var(--delay) cubic-bezier(.15,.55,.45,1) both; }
+.rsvp-confetti i:nth-child(3n) { width:5px;height:5px;border-radius:50%; }
+@keyframes rsvp-confetti { 0%{opacity:0;transform:translate3d(0,45px,0) rotate(0)} 15%{opacity:.85;transform:translate3d(calc(var(--drift) * -.3),-25px,0) rotate(65deg)} 75%{opacity:.65} 100%{opacity:0;transform:translate3d(var(--drift),340px,0) rotate(var(--spin))} }
+.rsvp-form .guest-count .guest-stepper { display:flex;align-items:center;width:fit-content;margin-top:10px;border:1px solid #c5b394;border-radius:6px;overflow:hidden;background:#fffdf9; }
+.guest-stepper button { width:48px;height:50px;border:0;background:transparent;font-size:24px;color:var(--burgundy);touch-action:manipulation; }
+.guest-stepper button:focus-visible { outline-offset:-4px; }
+.rsvp-form .guest-count input { width:65px;min-height:50px;margin:0;border:0;border-inline:1px solid #e6dac8;border-radius:0;text-align:center;appearance:textfield; }
+.guest-count input::-webkit-inner-spin-button,.guest-count input::-webkit-outer-spin-button { appearance:none;margin:0; }
+.rsvp-button:disabled { cursor:wait; }
+.rsvp-button .rsvp-spinner { width:19px;height:19px;flex-shrink:0;border:2px solid #ffffff55;border-top-color:#f8f4ed;border-radius:50%;animation:rsvp-spin .8s linear infinite; }
+@keyframes rsvp-spin { to{transform:rotate(360deg)} }
+.rsvp-progress { min-height:24px;margin:12px 0 0;font-size:13px;color:var(--muted);line-height:1.6; }
+.rsvp-progress:empty { display:none; }
+@media(max-width:760px) {
+  .rsvp-card { border-radius:8px; }
+  .rsvp-fields { gap:24px; }
+  .rsvp-form input:not([type=radio]),.rsvp-form textarea { min-height:52px;padding:13px 12px; }
+  .rsvp-form .guest-count input { padding:10px 4px; }
+  .rsvp-form .attendance-choice { min-height:76px;padding:16px; }
+  .choice-copy strong { font-size:15px; }
+  .rsvp-button { min-height:56px;font-size:15px; }
+  .rsvp-success h3 { font-size:clamp(30px,8vw,38px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .rsvp-confetti { display:none; }
+  .rsvp-button .rsvp-spinner { animation:none; }
+}

@@ -117,3 +117,10 @@ Production build/TypeScript and static asset/calendar verification passed. Brows
 Names now include Dr. across the opening, hero, caption, RSVP signature, closing, footer, accessibility labels, page/social metadata and calendar summaries. Existing family and contact titles preserved. Smaller inline display titles and phone-specific type sizing keep each title attached to its name. Closing names wrap between people. New WhatsApp card uses both titles and a new asset URL.
 
 TypeScript passed. Original Windows build cache/config transpilation had access errors; production compilation, type checking and static export passed using temporary equivalent ESM config and webpack after moving the old cache aside. Original next.config.ts restored. Export checked for all four display titles, combined names and sharing image. Browser QA was blocked by the browser URL policy on the existing error tab; mobile visual checks are not claimed for this revision. No deployment performed.
+
+## Mobile RSVP feedback — 15 October 2026
+
+Larger mobile inputs (52px), attendance choices (76px) and submit button (56px); guest count has labelled +/- buttons and still supports numeric keyboard entry, constrained to 1–50. Submission disables the form and displays a spinner plus a polite live saving message. Confirmed replies focus the success heading and play a single, contained 32-piece champagne/ivory/burgundy confetti animation. Animation never intercepts taps or spills outside the reply card. Reduced motion suppresses confetti and spinner rotation. Existing failure guidance and duplicate-submission guard retained. No live RSVP was submitted.
+
+TypeScript and all 12 existing behavior tests passed, including real-confirmation requirements and ambiguous-failure handling. Browser interaction/animation appearance has not been freshly verified because the browser blocked the existing local error tab earlier in this session.
+Production compilation and build type checking passed, but static export stopped on a Windows EPERM directory-access error in the generated _global-error route. The original next.config.ts was restored; deployment build remains unverified.
