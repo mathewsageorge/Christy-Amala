@@ -111,3 +111,9 @@ New generated sharing artwork is 1200×630 JPEG, 79,362 bytes. OG and Twitter me
 Added once-per-visit section warmth, centre-out gold divider lines, and contained background glow. Softened portrait reveal to opacity plus a 2.5% settling zoom. Headings rise 8px; event title, date, time, venue and actions reveal individually. Extended tap feedback to directions, calendars, discovery, music and navigation. Monogram receives one passing gold highlight on invitation opening. Effects wait for cover dismissal, do not intercept pointer events, and respect reduced motion; changing that preference disconnects observers and restores visible content. No continuous scroll handler or new dependency.
 
 Production build/TypeScript and static asset/calendar verification passed. Browser inspection at 390px confirmed section classes, colour endpoints, divider/glow animations, no horizontal overflow and no console errors. RSVP submission was not exercised. Reduced-motion handling reviewed in code, not emulated on a physical device.
+
+## Doctor titles — 15 October 2026
+
+Names now include Dr. across the opening, hero, caption, RSVP signature, closing, footer, accessibility labels, page/social metadata and calendar summaries. Existing family and contact titles preserved. Smaller inline display titles and phone-specific type sizing keep each title attached to its name. Closing names wrap between people. New WhatsApp card uses both titles and a new asset URL.
+
+TypeScript passed. Original Windows build cache/config transpilation had access errors; production compilation, type checking and static export passed using temporary equivalent ESM config and webpack after moving the old cache aside. Original next.config.ts restored. Export checked for all four display titles, combined names and sharing image. Browser QA was blocked by the browser URL policy on the existing error tab; mobile visual checks are not claimed for this revision. No deployment performed.

@@ -350,3 +350,18 @@ main > section:not(.hero):not(.closing)::after { content:"";position:absolute;to
 @keyframes paper-warmth { from{background-color:#f8f4ed} to{background-color:#f4eee4} }
 @keyframes celebration-warmth { from{background-color:#f5f0e8} to{background-color:#efe8dd} }
 @keyframes reply-warmth { from{background-color:#f5efe6} to{background-color:#eee6da} }
+
+/* Honorifics stay with each name, with room for the ribbon on narrow phones. */
+.display-name { white-space:nowrap; }
+.doctor-title { font-size:.43em;letter-spacing:0; }
+.ribbon-card h2 .display-name { display:inline; }
+.closing-names>span { white-space:nowrap; }
+.closing-names>i { font-style:italic;font-size:.7em; }
+@media(max-width:760px) {
+  h1 { font-size:clamp(57px,17vw,82px); }
+  .ribbon-card h2 { font-size:clamp(51px,17cqw,68px); }
+  .ribbon-card-heading { top:11%; }
+  .closing-names { display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:0 .2em;font-size:clamp(30px,8vw,38px); }
+  figcaption { align-items:baseline; }
+  figcaption>span:first-child { font-size:clamp(20px,5.5vw,23px); }
+}

@@ -1,4 +1,5 @@
 "use client";
+import { DisplayName } from "@/components/display-name";
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useAnimate } from "motion/react";
@@ -90,7 +91,7 @@ export function Experience() {
         <div className="ribbon-card">
           <div className="ribbon-card-heading">
             <p className="gate-kicker">Together, forever</p>
-            <h2 id="gate-title"><span>Christy</span><i>&</i><span>Amala</span></h2>
+            <h2 id="gate-title"><span><DisplayName name={wedding.couple.groom}/></span><i>&</i><span><DisplayName name={wedding.couple.bride}/></span></h2>
           </div>
           <div className="ribbon-wrap" aria-hidden="true">
             <div className="ribbon-layer ribbon-left"/>

@@ -1,3 +1,4 @@
+import { DisplayName } from "@/components/display-name";
 import Image from "next/image";
 import { SectionAtmosphere } from "@/components/section-atmosphere";
 import { wedding, mapLink } from "@/config/wedding";
@@ -15,12 +16,12 @@ function Arrow() { return <span aria-hidden="true" className="action-arrow">↗<
 export default function Home() {
   return <>
     <a className="skip-link" href="#celebration">Skip to event details</a>
-    <header className="masthead"><a className="monogram" href="#invitation" aria-label="Christy and Amala, invitation">C <i>&</i> A</a><span className="eyebrow">A celebration of love</span><a className="header-date" href="#celebration">{wedding.dateNumeric}</a></header>
+    <header className="masthead"><a className="monogram" href="#invitation" aria-label="Dr. Christy and Dr. Amala, invitation">C <i>&</i> A</a><span className="eyebrow">A celebration of love</span><a className="header-date" href="#celebration">{wedding.dateNumeric}</a></header>
     <main id="invitation">
       <section className="hero" aria-labelledby="couple-names">
         <div className="hero-copy">
           <p className="eyebrow hero-kicker">Together with our families</p>
-          <h1 id="couple-names" tabIndex={-1}><span className="name-mask"><span>{wedding.couple.groom}</span></span><i>&</i><span className="name-mask"><span>{wedding.couple.bride}</span></span></h1>
+          <h1 id="couple-names" tabIndex={-1}><span className="name-mask"><span><DisplayName name={wedding.couple.groom}/></span></span><i>&</i><span className="name-mask"><span><DisplayName name={wedding.couple.bride}/></span></span></h1>
           <p className="invitation-line">{wedding.invitation}</p>
           <Reveal kind="date" className="hero-date"><span>{wedding.date}</span><span>{wedding.place}</span><span className="date-rule" aria-hidden="true"/></Reveal>
           <a className="discover" href="#families"><span>Discover the celebration</span><span aria-hidden="true">↓</span></a>
@@ -41,7 +42,7 @@ export default function Home() {
       </section>
       <section className="anticipation section" aria-labelledby="countdown-title"><Reveal><p className="eyebrow">A moment to look forward to</p><h2 id="countdown-title">Counting the days<br/><em>until we celebrate.</em></h2><Countdown/><p className="countdown-date">{wedding.dateShort} <span aria-hidden="true">·</span> {wedding.ceremony.time} IST</p></Reveal></section>
       <Rsvp/>
-      <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names">{wedding.couple.names}</p><p className="eyebrow closing-date">{wedding.date}</p><div className="best-wishes"><p>Best wishes from</p><p className="best-wishes-name">{wedding.bestWishes}</p></div><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
+      <section className="closing section" aria-labelledby="closing-title"><Reveal><Flourish light/><h2 id="closing-title">{wedding.closing}</h2><p className="with-love">With love,</p><p className="closing-names"><span>{wedding.couple.groom}</span><i aria-hidden="true"> & </i><span>{wedding.couple.bride}</span></p><p className="eyebrow closing-date">{wedding.date}</p><div className="best-wishes"><p>Best wishes from</p><p className="best-wishes-name">{wedding.bestWishes}</p></div><div className="closing-monogram" aria-hidden="true">C <i>&</i> A</div></Reveal></section>
       <section className="wedding-contact" id="contact" aria-labelledby="contact-title">
         <Reveal><h2 id="contact-title">Give us a Call</h2>
         <div className="contact-list">{wedding.contacts.map(contact => <a key={contact.phone} href={`tel:${contact.phone}`} aria-label={`Call ${contact.name} on ${contact.displayPhone}`}><span className="contact-name">{contact.name}</span><span className="contact-number">{contact.displayPhone}</span></a>)}</div></Reveal>

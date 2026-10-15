@@ -37,6 +37,13 @@
       "prompt": "Finished wedding WhatsApp/social preview artwork, landscape 1200x630 aspect ratio. Sophisticated flat wedding announcement, ivory stationery, champagne gold satin bow as small corner/side accent, fine gold border, generous margins. Burgundy elegant serif names very large and legible at thumbnail size. All text centered in safe area, names largest, date next, smaller uppercase announcement and location. Exact text: WE’RE GETTING MARRIED; Christy & Amala; 03 JANUARY 2027; PATHANAMTHITTA, KERALA. No Dr titles, URL, extra text, people, photos, watermark. Flat finished artwork, not photographed mockup or screenshot.",
       "inspection": "First candidate accepted after visual inspection. Resized to 1200x630 and encoded as JPEG; PNG fallback also updated.",
       "attempts": 1
+    },
+    {
+      "file": "public/whatsapp-preview-doctors.jpg",
+      "mode": "Built-in image_gen edit",
+      "prompt": "Change only the names line to Dr. Christy & Dr. Amala. Both Dr. prefixes must be present and legible, smaller than the names if necessary to retain generous side margins. Keep ivory paper, gold satin bow, gold border, burgundy serif style, announcement, date 03 JANUARY 2027 and location PATHANAMTHITTA, KERALA unchanged. Landscape 1200:630.",
+      "inspection": "Both titles and names verified visually. Resized to 1200x630 JPEG; og.png fallback refreshed.",
+      "attempts": 1
     }
   ]
 }
